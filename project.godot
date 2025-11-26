@@ -19,7 +19,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-ItemManager="*res://addons/simple_inventory/scripts/managers/ItemManager.gd"
+ItemManager="*res://addons/simple_inventory/scripts/managers/item_manager.gd"
+ItemUseStrategyManager="*res://addons/simple_inventory/scripts/managers/item_use_strategy_manager.gd"
 
 [editor_plugins]
 

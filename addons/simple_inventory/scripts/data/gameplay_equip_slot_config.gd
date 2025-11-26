@@ -1,8 +1,11 @@
 extends Resource
 class_name GameplayEquipSlotConfig
 
-## 槽位名称
-@export var slot_name: StringName = ""
+## 槽位唯一标识符（ID）
+@export var slot_id: StringName = ""
+
+## 槽位显示名称
+@export var display_name: String = ""
 
 ## 装备类型ID（引用 GameplayEquipType）
 @export var equip_type_id: StringName = ""

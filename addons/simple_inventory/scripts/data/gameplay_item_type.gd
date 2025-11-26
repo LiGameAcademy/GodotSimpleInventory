@@ -18,3 +18,6 @@ class_name GameplayItemType
 
 ## 默认最大堆叠数
 @export var default_max_stack: int = 1
+
+## 使用策略ID（用于物品使用，如 "equip", "consumable"）
+@export var use_strategy_id: StringName = ""
