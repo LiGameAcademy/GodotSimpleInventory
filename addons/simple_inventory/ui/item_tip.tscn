@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5c5g8gyika7d"]
 
-[ext_resource type="Script" path="res://addons/simple_inventory/widgets/item_tip.gd" id="1_cg4ha"]
+[ext_resource type="Script" uid="uid://crt8oxyn48x1v" path="res://addons/simple_inventory/ui/item_tip.gd" id="1_cg4ha"]
 [ext_resource type="Texture2D" uid="uid://byp2acad4ffjv" path="res://icon.svg" id="2_3n0ao"]
 [ext_resource type="FontFile" uid="uid://bj4wlflwm0lq7" path="res://addons/simple_inventory/assets/fonts/SourceHanSansSC-Regular-2.otf" id="3_u1cdg"]
 

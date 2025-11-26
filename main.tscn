@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsdssohk5riv1"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_ccqct"]
-[ext_resource type="PackedScene" uid="uid://cgv4kbrho80c8" path="res://addons/simple_inventory/widgets/inventory.tscn" id="2_7smc8"]
+[ext_resource type="Script" uid="uid://bq7a5laqorynj" path="res://main.gd" id="1_ccqct"]
+[ext_resource type="PackedScene" uid="uid://cgv4kbrho80c8" path="res://addons/simple_inventory/ui/inventory.tscn" id="2_7smc8"]
 [ext_resource type="PackedScene" uid="uid://b8fau1k8y5ynq" path="res://src/entity/player.tscn" id="3_liq35"]
 [ext_resource type="Texture2D" uid="uid://wnp6rxvtmm2a" path="res://icon.png" id="4_nntte"]
 
@@ -24,6 +24,7 @@ stretch_mode = 0
 unique_name_in_owner = true
 offset_right = 291.0
 offset_bottom = 355.0
+script = null
 
 [node name="w_GM" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 7

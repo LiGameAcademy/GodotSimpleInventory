@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqf8rbssc0uqm"]
 
-[ext_resource type="PackedScene" uid="uid://bpmild4bh2ry1" path="res://addons/simple_inventory/widgets/item_slot.tscn" id="1_r13cl"]
-[ext_resource type="Script" path="res://addons/simple_inventory/widgets/equip_slot.gd" id="1_r66q0"]
+[ext_resource type="PackedScene" uid="uid://bpmild4bh2ry1" path="res://addons/simple_inventory/ui/item_slot.tscn" id="1_r13cl"]
+[ext_resource type="Script" uid="uid://doorj14orimln" path="res://addons/simple_inventory/ui/equip_slot.gd" id="1_r66q0"]
 [ext_resource type="Texture2D" uid="uid://fhgibxljfpe4" path="res://addons/simple_inventory/assets/textures/equip_slot/chest_slot.tres" id="2_k0avv"]
 
 [node name="equip_slot" groups=["equip_slot"] instance=ExtResource("1_r13cl")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfb2bsiwl44wm"]
 
-[ext_resource type="Script" path="res://addons/simple_inventory/widgets/item_tile.gd" id="1_f83w0"]
+[ext_resource type="Script" uid="uid://c7w0l8u6s5ur" path="res://addons/simple_inventory/ui/item_tile.gd" id="1_f83w0"]
 [ext_resource type="Texture2D" uid="uid://dbxonfastqx72" path="res://addons/simple_inventory/assets/textures/items/egg.tres" id="2_dwvmm"]
 
 [node name="item_tile" type="MarginContainer"]

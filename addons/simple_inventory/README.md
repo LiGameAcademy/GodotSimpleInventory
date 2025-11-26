@@ -45,7 +45,8 @@ inventory.remove_item(0)  # Remove item at slot 0
 
 ## Documentation
 
-For detailed documentation and examples, please visit our [Wiki](https://github.com/Liweimin0512/GodotGear/wiki) *(Coming soon)*
+- 📋 [Refactoring Plan](./REFACTORING_PLAN.md) - Detailed architecture refactoring plan and technical roadmap
+- 📚 For detailed documentation and examples, please visit our [Wiki](https://github.com/Liweimin0512/GodotGear/wiki) *(Coming soon)*
 
 ## Contributing
 

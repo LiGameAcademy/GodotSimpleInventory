@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://cgv4kbrho80c8"]
 
-[ext_resource type="Script" path="res://addons/simple_inventory/widgets/inventory.gd" id="1_e1tsy"]
+[ext_resource type="Script" uid="uid://bnag2d80hhlqw" path="res://addons/simple_inventory/ui/inventory.gd" id="1_e1tsy"]
 [ext_resource type="Texture2D" uid="uid://b4mnhn6ma74vi" path="res://addons/simple_inventory/assets/textures/GUI.png" id="2_fj6vp"]
 [ext_resource type="FontFile" uid="uid://bj4wlflwm0lq7" path="res://addons/simple_inventory/assets/fonts/SourceHanSansSC-Regular-2.otf" id="3_h6u1y"]
-[ext_resource type="PackedScene" uid="uid://dqf8rbssc0uqm" path="res://addons/simple_inventory/widgets/equip_slot.tscn" id="4_m0rqm"]
+[ext_resource type="PackedScene" uid="uid://dqf8rbssc0uqm" path="res://addons/simple_inventory/ui/equip_slot.tscn" id="4_m0rqm"]
 [ext_resource type="Texture2D" uid="uid://dfa2cht5nd7ep" path="res://addons/simple_inventory/assets/textures/buttons_4x.png" id="5_0pw4w"]
-[ext_resource type="PackedScene" uid="uid://bpmild4bh2ry1" path="res://addons/simple_inventory/widgets/item_slot.tscn" id="5_ovt45"]
+[ext_resource type="PackedScene" uid="uid://bpmild4bh2ry1" path="res://addons/simple_inventory/ui/item_slot.tscn" id="5_ovt45"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldjmk"]
 atlas = ExtResource("2_fj6vp")

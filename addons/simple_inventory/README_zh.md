@@ -45,7 +45,8 @@ inventory.remove_item(0)  # 移除槽位0的物品
 
 ## 文档
 
-详细文档和示例请访问我们的 [Wiki](https://github.com/Liweimin0512/GodotGear/wiki) *（即将推出）*
+- 📋 [重构计划文档](./REFACTORING_PLAN.md) - 详细的架构重构计划和技术路线图
+- 📚 详细文档和示例请访问我们的 [Wiki](https://github.com/Liweimin0512/GodotGear/wiki) *（即将推出）*
 
 ## 贡献
 
