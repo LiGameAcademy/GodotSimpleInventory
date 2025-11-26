@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GameplayEquipType" load_steps=2 format=3 uid="uid://c0okvs4bafo66"]
+
+[ext_resource type="Script" uid="uid://bwr2gu1dm1riu" path="res://addons/simple_inventory/scripts/data/gameplay_equip_type.gd" id="1_2cf6g"]
+
+[resource]
+script = ExtResource("1_2cf6g")
+type_id = &"legs"
+display_name = "护腿"
+metadata/_custom_type_script = "uid://bwr2gu1dm1riu"

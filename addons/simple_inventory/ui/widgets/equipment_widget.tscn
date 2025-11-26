@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://difu7073qhw6m"]
+
+[ext_resource type="Script" uid="uid://cf0vakdyv0gf3" path="res://addons/simple_inventory/ui/widgets/equipment_widget.gd" id="1_bctgr"]
+[ext_resource type="Texture2D" uid="uid://b4mnhn6ma74vi" path="res://addons/simple_inventory/assets/textures/GUI.png" id="1_fcjjf"]
+[ext_resource type="PackedScene" uid="uid://dqf8rbssc0uqm" path="res://addons/simple_inventory/ui/slots/equip_slot.tscn" id="2_otemo"]
+[ext_resource type="Resource" uid="uid://bhy8aihj00hux" path="res://addons/simple_inventory/assets/data/equip_slots/necklace_equip_slot.tres" id="4_2whui"]
+[ext_resource type="Resource" uid="uid://jxcvuo4srmrj" path="res://addons/simple_inventory/assets/data/equip_slots/weapon_equip_slot.tres" id="5_6ht52"]
+[ext_resource type="Resource" uid="uid://drf4p50u1onfr" path="res://addons/simple_inventory/assets/data/equip_slots/head_equip_slot.tres" id="6_bt1ck"]
+[ext_resource type="Resource" uid="uid://lv7nwxceop8d" path="res://addons/simple_inventory/assets/data/equip_slots/chest_equip_slot.tres" id="7_s226y"]
+[ext_resource type="Resource" uid="uid://osxsfyv07w2l" path="res://addons/simple_inventory/assets/data/equip_slots/legs_equip_slot.tres" id="8_0diww"]
+[ext_resource type="Resource" uid="uid://8axm4prjucfa" path="res://addons/simple_inventory/assets/data/equip_slots/feet_equip_slot.tres" id="9_bjse7"]
+[ext_resource type="Resource" uid="uid://dhbm4fkec48b4" path="res://addons/simple_inventory/assets/data/equip_slots/ring_equip_slot_2.tres" id="10_0diww"]
+[ext_resource type="Resource" uid="uid://jhsu0kyeqqdq" path="res://addons/simple_inventory/assets/data/equip_slots/ring_equip_slot_1.tres" id="11_bjse7"]
+
+[node name="EquipmentWidget" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -153.0
+offset_right = 126.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bctgr")
+
+[node name="TextureRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_fcjjf")
+region_rect = Rect2(48, 96, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 6
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="equip_slot" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_otemo")]
+layout_mode = 2
+equip_slot = ExtResource("4_2whui")
+
+[node name="equip_slot2" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_otemo")]
+layout_mode = 2
+equip_slot = ExtResource("5_6ht52")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="equip_slot" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_otemo")]
+layout_mode = 2
+equip_slot = ExtResource("6_bt1ck")
+
+[node name="equip_slot2" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_otemo")]
+layout_mode = 2
+equip_slot = ExtResource("7_s226y")
+
+[node name="equip_slot3" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_otemo")]
+layout_mode = 2
+equip_slot = ExtResource("8_0diww")
+
+[node name="equip_slot4" parent="MarginContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_otemo")]
+layout_mode = 2
+equip_slot = ExtResource("9_bjse7")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="equip_slot" parent="MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("2_otemo")]
+layout_mode = 2
+equip_slot = ExtResource("10_0diww")
+
+[node name="equip_slot2" parent="MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("2_otemo")]
+layout_mode = 2
+equip_slot = ExtResource("11_bjse7")
+
+[node name="equip_slot3" parent="MarginContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("2_otemo")]
+visible = false
+layout_mode = 2

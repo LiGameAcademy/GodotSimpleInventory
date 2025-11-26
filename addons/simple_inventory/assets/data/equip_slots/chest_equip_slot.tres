@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GameplayEquipSlotConfig" load_steps=3 format=3 uid="uid://lv7nwxceop8d"]
+
+[ext_resource type="Script" uid="uid://dkcyvy2k70v3" path="res://addons/simple_inventory/scripts/data/gameplay_equip_slot_config.gd" id="1_xxpyv"]
+[ext_resource type="Texture2D" uid="uid://fhgibxljfpe4" path="res://addons/simple_inventory/assets/textures/equip_slot/chest_slot.tres" id="2_falaq"]
+
+[resource]
+script = ExtResource("1_xxpyv")
+slot_id = &"chest"
+display_name = "胸甲"
+equip_type_id = &"chest"
+slot_texture = ExtResource("2_falaq")
+metadata/_custom_type_script = "uid://dkcyvy2k70v3"

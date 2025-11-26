@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpmild4bh2ry1"]
 
-[ext_resource type="Script" uid="uid://c4ty6sqnqpg6f" path="res://addons/simple_inventory/ui/item_slot.gd" id="1_iibhv"]
+[ext_resource type="Script" uid="uid://c4ty6sqnqpg6f" path="res://addons/simple_inventory/ui/slots/item_slot.gd" id="1_iibhv"]
 [ext_resource type="Texture2D" uid="uid://b4mnhn6ma74vi" path="res://addons/simple_inventory/assets/textures/GUI.png" id="2_2f0i1"]
-[ext_resource type="PackedScene" uid="uid://cfb2bsiwl44wm" path="res://addons/simple_inventory/ui/item_tile.tscn" id="2_gijiy"]
+[ext_resource type="PackedScene" uid="uid://cfb2bsiwl44wm" path="res://addons/simple_inventory/ui/tiles/item_tile.tscn" id="2_gijiy"]
 
-[node name="item_slot" type="MarginContainer" groups=["item_slot"]]
+[node name="ItemSlot" type="MarginContainer" groups=["item_slot"]]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_iibhv")
@@ -25,5 +25,5 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
-[node name="item_tile" parent="." instance=ExtResource("2_gijiy")]
+[node name="ItemTile" parent="." instance=ExtResource("2_gijiy")]
 layout_mode = 2

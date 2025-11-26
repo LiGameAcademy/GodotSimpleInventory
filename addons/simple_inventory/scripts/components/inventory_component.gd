@@ -196,3 +196,10 @@ func _get_use_strategy(item: GameplayItemInstance) -> ItemUseStrategy:
 		return ItemUseStrategyManager.get_strategy(strategy_id)
 	
 	return null
+
+static func get_inventory_component(entity: Node) -> InventoryComponent:
+	if not is_instance_valid(entity):
+		return null
+	if entity.has_method("get_inventory_component"):
+		return entity.get_inventory_component()
+	return entity.get_node("InventoryComponent") as InventoryComponent

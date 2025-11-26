@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameplayItemType" load_steps=2 format=3 uid="uid://bdfkxjk475u2x"]
+
+[ext_resource type="Script" uid="uid://bhffynndss11g" path="res://addons/simple_inventory/scripts/data/gameplay_item_type.gd" id="1_y3n1c"]
+
+[resource]
+script = ExtResource("1_y3n1c")
+type_id = &"equip"
+display_name = "装备"
+stackable = false
+use_strategy_id = &"equip"
+metadata/_custom_type_script = "uid://bhffynndss11g"

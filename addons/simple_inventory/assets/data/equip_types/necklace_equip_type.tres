@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GameplayEquipType" load_steps=2 format=3 uid="uid://cshw1t7oj5cha"]
+
+[ext_resource type="Script" uid="uid://bwr2gu1dm1riu" path="res://addons/simple_inventory/scripts/data/gameplay_equip_type.gd" id="1_50w0b"]
+
+[resource]
+script = ExtResource("1_50w0b")
+type_id = &"necklace"
+display_name = "项链"
+metadata/_custom_type_script = "uid://bwr2gu1dm1riu"

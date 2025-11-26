@@ -9,6 +9,45 @@ var item_types: Dictionary[StringName, GameplayItemType] = {}
 ## 装备类型配置字典（type_id -> GameplayEquipType）
 var equip_types: Dictionary[StringName, GameplayEquipType] = {}
 
+## 是否自动加载基础资源
+@export var auto_load_resources: bool = true
+
+func _ready() -> void:
+	if auto_load_resources:
+		load_base_resources()
+
+## 加载基础资源（物品类型、装备类型）
+func load_base_resources() -> void:
+	# 加载物品类型
+	var item_type_paths: Array[String] = [
+		"res://addons/simple_inventory/assets/data/item_types/consumable_item_type.tres",
+		"res://addons/simple_inventory/assets/data/item_types/equip_item_type.tres",
+		"res://addons/simple_inventory/assets/data/item_types/material_item_type.tres",
+	]
+	
+	for path in item_type_paths:
+		if ResourceLoader.exists(path):
+			var item_type: GameplayItemType = load(path)
+			if is_instance_valid(item_type):
+				register_item_type(item_type)
+	
+	# 加载装备类型
+	var equip_type_paths: Array[String] = [
+		"res://addons/simple_inventory/assets/data/equip_types/weapon_equip_type.tres",
+		"res://addons/simple_inventory/assets/data/equip_types/chest_equip_type.tres",
+		"res://addons/simple_inventory/assets/data/equip_types/head_equip_type.tres",
+		"res://addons/simple_inventory/assets/data/equip_types/legs_equip_type.tres",
+		"res://addons/simple_inventory/assets/data/equip_types/feet_equip_type.tres",
+		"res://addons/simple_inventory/assets/data/equip_types/necklace_equip_type.tres",
+		"res://addons/simple_inventory/assets/data/equip_types/ring_equip_type.tres",
+	]
+	
+	for path in equip_type_paths:
+		if ResourceLoader.exists(path):
+			var equip_type: GameplayEquipType = load(path)
+			if is_instance_valid(equip_type):
+				register_equip_type(equip_type)
+
 ## 注册物品配置
 func register_item_config(item: GameplayItem) -> void:
 	if not is_instance_valid(item) or item.item_id.is_empty():

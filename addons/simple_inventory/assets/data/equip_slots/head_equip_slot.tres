@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GameplayEquipSlotConfig" load_steps=3 format=3 uid="uid://drf4p50u1onfr"]
+
+[ext_resource type="Script" uid="uid://dkcyvy2k70v3" path="res://addons/simple_inventory/scripts/data/gameplay_equip_slot_config.gd" id="1_mb736"]
+[ext_resource type="Texture2D" uid="uid://bq5agofi7fiod" path="res://addons/simple_inventory/assets/textures/equip_slot/head_slot.tres" id="2_mb736"]
+
+[resource]
+script = ExtResource("1_mb736")
+slot_id = &"head"
+display_name = "头盔"
+equip_type_id = &"head"
+slot_texture = ExtResource("2_mb736")
+metadata/_custom_type_script = "uid://dkcyvy2k70v3"

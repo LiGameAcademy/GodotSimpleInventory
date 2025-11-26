@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GameplayEquipType" load_steps=2 format=3 uid="uid://v3hfolhplknc"]
+
+[ext_resource type="Script" uid="uid://bwr2gu1dm1riu" path="res://addons/simple_inventory/scripts/data/gameplay_equip_type.gd" id="1_6k454"]
+
+[resource]
+script = ExtResource("1_6k454")
+type_id = &"ring"
+display_name = "戒指"
+allow_multiple = true
+metadata/_custom_type_script = "uid://bwr2gu1dm1riu"

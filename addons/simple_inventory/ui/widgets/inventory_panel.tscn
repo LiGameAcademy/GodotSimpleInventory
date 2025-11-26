@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgv4kbrho80c8"]
+
+[ext_resource type="Script" uid="uid://d2ecqaj08xcly" path="res://addons/simple_inventory/ui/widgets/inventory_panel.gd" id="1_wkjvb"]
+[ext_resource type="Texture2D" uid="uid://b4mnhn6ma74vi" path="res://addons/simple_inventory/assets/textures/GUI.png" id="2_fj6vp"]
+[ext_resource type="FontFile" uid="uid://bj4wlflwm0lq7" path="res://addons/simple_inventory/assets/fonts/SourceHanSansSC-Regular-2.otf" id="3_h6u1y"]
+[ext_resource type="PackedScene" uid="uid://difu7073qhw6m" path="res://addons/simple_inventory/ui/widgets/equipment_widget.tscn" id="4_nrdb8"]
+[ext_resource type="PackedScene" uid="uid://dva8745lj7y6t" path="res://addons/simple_inventory/ui/widgets/inventory_widget.tscn" id="5_wonev"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldjmk"]
+atlas = ExtResource("2_fj6vp")
+region = Rect2(81, 97, 30, 30)
+
+[node name="InventoryPanel" type="MarginContainer"]
+script = ExtResource("1_wkjvb")
+
+[node name="Panel" type="NinePatchRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_fj6vp")
+region_rect = Rect2(0, 96, 48, 32)
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="NinePatchRect" parent="MarginContainer2/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+texture = ExtResource("2_fj6vp")
+region_rect = Rect2(145, 81, 46, 14)
+patch_margin_left = 3
+patch_margin_top = 2
+patch_margin_right = 3
+patch_margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ButtonClose" type="Button" parent="MarginContainer2/VBoxContainer/MarginContainer3/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+icon = SubResource("AtlasTexture_ldjmk")
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer3/HBoxContainer/MarginContainer/ButtonClose"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_h6u1y")
+text = "背包"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="EquipmentWidget" parent="MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("4_nrdb8")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="InventoryWidget" parent="MarginContainer2/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("5_wonev")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/MarginContainer3/HBoxContainer/MarginContainer/ButtonClose" to="." method="_on_btn_close_pressed"]

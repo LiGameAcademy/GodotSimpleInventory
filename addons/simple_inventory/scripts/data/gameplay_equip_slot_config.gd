@@ -10,6 +10,9 @@ class_name GameplayEquipSlotConfig
 ## 装备类型ID（引用 GameplayEquipType）
 @export var equip_type_id: StringName = ""
 
+## 槽位纹理（用于UI显示）
+@export var slot_texture: Texture2D = null
+
 ## 是否允许多个装备（如戒指槽位）
 @export var allow_multiple: bool = false
 

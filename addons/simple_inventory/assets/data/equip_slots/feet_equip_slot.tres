@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GameplayEquipSlotConfig" load_steps=3 format=3 uid="uid://8axm4prjucfa"]
+
+[ext_resource type="Script" uid="uid://dkcyvy2k70v3" path="res://addons/simple_inventory/scripts/data/gameplay_equip_slot_config.gd" id="1_h5xm2"]
+[ext_resource type="Texture2D" uid="uid://cw0tmla7j1a2r" path="res://addons/simple_inventory/assets/textures/equip_slot/feet_slot.tres" id="2_h5xm2"]
+
+[resource]
+script = ExtResource("1_h5xm2")
+slot_id = &"feet"
+display_name = "鞋子"
+equip_type_id = &"feet"
+slot_texture = ExtResource("2_h5xm2")
+metadata/_custom_type_script = "uid://dkcyvy2k70v3"

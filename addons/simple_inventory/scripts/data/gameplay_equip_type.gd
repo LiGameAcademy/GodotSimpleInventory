@@ -12,9 +12,6 @@ class_name GameplayEquipType
 ## 图标（可选）
 @export var icon: Texture2D = null
 
-## 槽位纹理（可选）
-@export var slot_texture: Texture2D = null
-
 ## 是否允许多个（如戒指）
 @export var allow_multiple: bool = false
 

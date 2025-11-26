@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqf8rbssc0uqm"]
+
+[ext_resource type="PackedScene" uid="uid://bpmild4bh2ry1" path="res://addons/simple_inventory/ui/slots/item_slot.tscn" id="1_r13cl"]
+[ext_resource type="Script" uid="uid://doorj14orimln" path="res://addons/simple_inventory/ui/slots/equip_slot.gd" id="1_r66q0"]
+[ext_resource type="Texture2D" uid="uid://cifia2wj1ksuq" path="res://addons/simple_inventory/assets/textures/equip_slot/ring_slot.tres" id="3_fumho"]
+
+[node name="equip_slot" groups=["equip_slot"] instance=ExtResource("1_r13cl")]
+script = ExtResource("1_r66q0")
+equip_slot = null
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="1"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SlotIcon" type="TextureRect" parent="MarginContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_fumho")
+
+[node name="ItemTile" parent="." index="3"]
+unique_name_in_owner = true
+visible = false

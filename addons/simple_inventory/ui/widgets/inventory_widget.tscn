@@ -1,0 +1,196 @@
+[gd_scene load_steps=8 format=3 uid="uid://dva8745lj7y6t"]
+
+[ext_resource type="Script" uid="uid://bl6jtcudh62e" path="res://addons/simple_inventory/ui/widgets/inventory_widget.gd" id="1_kg5ao"]
+[ext_resource type="Texture2D" uid="uid://b4mnhn6ma74vi" path="res://addons/simple_inventory/assets/textures/GUI.png" id="1_ncrer"]
+[ext_resource type="FontFile" uid="uid://bj4wlflwm0lq7" path="res://addons/simple_inventory/assets/fonts/SourceHanSansSC-Regular-2.otf" id="2_kg5ao"]
+[ext_resource type="PackedScene" uid="uid://bpmild4bh2ry1" path="res://addons/simple_inventory/ui/slots/item_slot.tscn" id="3_sadpk"]
+[ext_resource type="Texture2D" uid="uid://dfa2cht5nd7ep" path="res://addons/simple_inventory/assets/textures/buttons_4x.png" id="4_o7gdw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uvpn"]
+atlas = ExtResource("4_o7gdw")
+region = Rect2(132, 4, 88, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cdjh"]
+atlas = ExtResource("4_o7gdw")
+region = Rect2(132, 4, 88, 56)
+
+[node name="InventoryWidget" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.5
+offset_top = -182.0
+offset_right = 150.5
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kg5ao")
+
+[node name="TextureRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_ncrer")
+region_rect = Rect2(48, 96, 32, 32)
+patch_margin_left = 6
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TabBar" type="TabBar" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_kg5ao")
+current_tab = 0
+tab_count = 4
+tab_0/title = "全部"
+tab_1/title = "消耗品"
+tab_2/title = "装备"
+tab_3/title = "材料"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 5
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 4
+
+[node name="item_slot" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot2" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot3" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot4" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot5" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot6" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot7" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot8" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot9" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot10" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot11" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot12" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot13" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot14" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot15" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot16" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot17" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot18" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot19" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="item_slot20" parent="MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/MarginContainer/GridContainer" instance=ExtResource("3_sadpk")]
+layout_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+
+[node name="ButtonDecompose" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+icon = SubResource("AtlasTexture_3uvpn")
+flat = true
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer/ButtonDecompose"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_kg5ao")
+text = "分解"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonPack" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+icon = SubResource("AtlasTexture_3cdjh")
+flat = true
+icon_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer/ButtonPack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_kg5ao")
+text = "整理"
+horizontal_alignment = 1
+vertical_alignment = 1

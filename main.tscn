@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bsdssohk5riv1"]
 
 [ext_resource type="Script" uid="uid://bq7a5laqorynj" path="res://main.gd" id="1_ccqct"]
-[ext_resource type="PackedScene" uid="uid://cgv4kbrho80c8" path="res://addons/simple_inventory/ui/inventory.tscn" id="2_7smc8"]
+[ext_resource type="PackedScene" uid="uid://cgv4kbrho80c8" path="res://addons/simple_inventory/ui/widgets/inventory_panel.tscn" id="2_7smc8"]
 [ext_resource type="PackedScene" uid="uid://b8fau1k8y5ynq" path="res://src/entity/player.tscn" id="3_liq35"]
 [ext_resource type="Texture2D" uid="uid://wnp6rxvtmm2a" path="res://icon.png" id="4_nntte"]
 
@@ -13,18 +13,17 @@ unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="inventory_icon" type="TextureButton" parent="CanvasLayer"]
+[node name="InventoryButton" type="TextureButton" parent="CanvasLayer"]
 custom_minimum_size = Vector2(64, 64)
 offset_right = 40.0
 offset_bottom = 40.0
 texture_normal = ExtResource("4_nntte")
 stretch_mode = 0
 
-[node name="inventory" parent="CanvasLayer" instance=ExtResource("2_7smc8")]
+[node name="InventoryPanel" parent="CanvasLayer" instance=ExtResource("2_7smc8")]
 unique_name_in_owner = true
-offset_right = 291.0
-offset_bottom = 355.0
-script = null
+offset_right = 577.0
+offset_bottom = 436.0
 
 [node name="w_GM" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 7
@@ -56,6 +55,6 @@ custom_minimum_size = Vector2(60, 35)
 layout_mode = 2
 text = "提交"
 
-[connection signal="pressed" from="CanvasLayer/inventory_icon" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/InventoryButton" to="." method="_on_texture_button_pressed"]
 [connection signal="text_submitted" from="CanvasLayer/w_GM/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="CanvasLayer/w_GM/HBoxContainer/btn_submit" to="." method="_on_btn_submit_pressed"]

@@ -1,11 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8fau1k8y5ynq"]
+[gd_scene load_steps=13 format=3 uid="uid://b8fau1k8y5ynq"]
 
-[ext_resource type="Script" path="res://addons/simple_inventory/C_Inventory.gd" id="1_xaw6l"]
-[ext_resource type="Resource" uid="uid://ced6kdegijcad" path="res://src/items/axe.tres" id="2_clkul"]
-[ext_resource type="Script" path="res://addons/simple_inventory/Item.gd" id="2_u4kir"]
+[ext_resource type="Script" uid="uid://0qe4c4res5uo" path="res://addons/simple_inventory/scripts/components/equipment_component.gd" id="1_ex5j3"]
+[ext_resource type="Script" uid="uid://d00u1pw6srkpo" path="res://src/entity/player.gd" id="1_i70u7"]
+[ext_resource type="Script" uid="uid://flbpqf24gt4s" path="res://addons/simple_inventory/scripts/components/inventory_component.gd" id="2_76mi7"]
+[ext_resource type="Script" uid="uid://dkcyvy2k70v3" path="res://addons/simple_inventory/scripts/data/gameplay_equip_slot_config.gd" id="2_bgrip"]
+[ext_resource type="Resource" uid="uid://8axm4prjucfa" path="res://addons/simple_inventory/assets/data/equip_slots/feet_equip_slot.tres" id="3_i70u7"]
+[ext_resource type="Resource" uid="uid://drf4p50u1onfr" path="res://addons/simple_inventory/assets/data/equip_slots/head_equip_slot.tres" id="4_1iw5x"]
+[ext_resource type="Resource" uid="uid://osxsfyv07w2l" path="res://addons/simple_inventory/assets/data/equip_slots/legs_equip_slot.tres" id="5_yvjtq"]
+[ext_resource type="Resource" uid="uid://lv7nwxceop8d" path="res://addons/simple_inventory/assets/data/equip_slots/chest_equip_slot.tres" id="6_u5cf2"]
+[ext_resource type="Resource" uid="uid://jhsu0kyeqqdq" path="res://addons/simple_inventory/assets/data/equip_slots/ring_equip_slot_1.tres" id="7_g6isw"]
+[ext_resource type="Resource" uid="uid://dhbm4fkec48b4" path="res://addons/simple_inventory/assets/data/equip_slots/ring_equip_slot_2.tres" id="8_qvg4t"]
+[ext_resource type="Resource" uid="uid://jxcvuo4srmrj" path="res://addons/simple_inventory/assets/data/equip_slots/weapon_equip_slot.tres" id="9_ui2u3"]
+[ext_resource type="Resource" uid="uid://bhy8aihj00hux" path="res://addons/simple_inventory/assets/data/equip_slots/necklace_equip_slot.tres" id="10_emkpi"]
 
-[node name="player" type="Node2D"]
+[node name="Player" type="Node2D"]
+script = ExtResource("1_i70u7")
 
-[node name="C_Inventory" type="Node" parent="."]
-script = ExtResource("1_xaw6l")
-items = Array[ExtResource("2_u4kir")]([ExtResource("2_clkul")])
+[node name="EquipmentComponent" type="Node" parent="."]
+script = ExtResource("1_ex5j3")
+equip_slot_configs_array = Array[ExtResource("2_bgrip")]([ExtResource("3_i70u7"), ExtResource("4_1iw5x"), ExtResource("5_yvjtq"), ExtResource("6_u5cf2"), ExtResource("7_g6isw"), ExtResource("8_qvg4t"), ExtResource("9_ui2u3"), ExtResource("10_emkpi")])
+metadata/_custom_type_script = "uid://0qe4c4res5uo"
+
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource("2_76mi7")
+max_slot_count = 25
+metadata/_custom_type_script = "uid://flbpqf24gt4s"

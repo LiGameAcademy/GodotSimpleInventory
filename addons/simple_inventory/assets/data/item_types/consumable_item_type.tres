@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameplayItemType" load_steps=2 format=3 uid="uid://cg560au4ql7lt"]
+
+[ext_resource type="Script" uid="uid://bhffynndss11g" path="res://addons/simple_inventory/scripts/data/gameplay_item_type.gd" id="1_n5vpl"]
+
+[resource]
+script = ExtResource("1_n5vpl")
+type_id = &"consumable"
+display_name = "消耗品"
+default_max_stack = 99
+use_strategy_id = &"consumable"
+metadata/_custom_type_script = "uid://bhffynndss11g"

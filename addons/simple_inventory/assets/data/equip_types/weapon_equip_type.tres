@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="GameplayEquipType" load_steps=2 format=3 uid="uid://cmambrl5dg14f"]
+
+[ext_resource type="Script" uid="uid://bwr2gu1dm1riu" path="res://addons/simple_inventory/scripts/data/gameplay_equip_type.gd" id="1_42hvt"]
+
+[resource]
+script = ExtResource("1_42hvt")
+type_id = &"weapon"
+display_name = "武器"
+metadata/_custom_type_script = "uid://bwr2gu1dm1riu"

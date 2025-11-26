@@ -69,6 +69,10 @@ func unequip_item(slot_id: StringName) -> bool:
 	equip_changed.emit(slot_id, null)
 	return true
 
+## 获取装备
+func get_equip(slot_id: StringName) -> GameplayEquipInstance:
+	return equipped_items.get(slot_id)
+
 ## 装备到指定槽位
 func _equip_to_slot(equip: GameplayEquipInstance, slot_id: StringName) -> bool:
 	var old_equip: GameplayEquipInstance = equipped_items.get(slot_id)
