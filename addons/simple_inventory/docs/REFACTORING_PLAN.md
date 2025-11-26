@@ -410,26 +410,27 @@ static func create_item_from_config(config: GameplayItem, quantity: int = 1) -> 
 ```
 addons/simple_inventory/
 ├── scripts/
+│   ├── components/
+│   │   ├── InventoryComponent.gd          # 物品管理组件
+│   │   ├── InventoryComponent.gd.uid
+│   │   ├── EquipmentComponent.gd          # 装备管理组件
+│   │   └── EquipmentComponent.gd.uid
+│   │
+│   ├── data/
+│   │   ├── GameplayItem.gd                # 物品配置资源
+│   │   ├── GameplayItem.gd.uid
+│   │   ├── GameplayEquip.gd               # 装备配置资源
+│   │   ├── GameplayEquip.gd.uid
+│   │   ├── EquipType.gd                   # 装备类型资源
+│   │   ├── EquipType.gd.uid
+│   │   ├── EquipSlotConfig.gd             # 装备槽配置资源
+│   │   ├── EquipSlotConfig.gd.uid
+│   │   ├── ItemInstance.gd               # 物品实例（运行时）
+│   │   ├── ItemInstance.gd.uid
+│   │   ├── EquipInstance.gd               # 装备实例（运行时）
+│   │   └── EquipInstance.gd.uid
+│   │
 │   ├── core/
-│   │   ├── components/
-│   │   │   ├── InventoryComponent.gd          # 物品管理组件
-│   │   │   ├── InventoryComponent.gd.uid
-│   │   │   ├── EquipmentComponent.gd          # 装备管理组件
-│   │   │   └── EquipmentComponent.gd.uid
-│   │   │
-│   │   ├── data/
-│   │   │   ├── GameplayItem.gd                # 物品配置资源
-│   │   │   ├── GameplayItem.gd.uid
-│   │   │   ├── GameplayEquip.gd               # 装备配置资源
-│   │   │   ├── GameplayEquip.gd.uid
-│   │   │   ├── EquipType.gd                   # 装备类型资源
-│   │   │   ├── EquipType.gd.uid
-│   │   │   ├── EquipSlotConfig.gd             # 装备槽配置资源
-│   │   │   ├── EquipSlotConfig.gd.uid
-│   │   │   ├── ItemInstance.gd               # 物品实例（运行时）
-│   │   │   ├── ItemInstance.gd.uid
-│   │   │   ├── EquipInstance.gd               # 装备实例（运行时）
-│   │   │   └── EquipInstance.gd.uid
 │   │   │
 │   │   ├── managers/
 │   │   │   ├── ItemManager.gd                 # 物品管理器单例
@@ -455,7 +456,7 @@ addons/simple_inventory/
 │   │       ├── CommandProcessor.gd             # 命令处理器
 │   │       └── CommandProcessor.gd.uid
 │   │
-│   └── widgets/
+│   └── ui/
 │       ├── InventoryWidget.gd                 # 背包UI
 │       ├── InventoryWidget.gd.uid
 │       ├── inventory.tscn
