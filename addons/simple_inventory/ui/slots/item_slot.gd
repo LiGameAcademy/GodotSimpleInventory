@@ -5,6 +5,8 @@ class_name ItemSlot
 @onready var item_tile: MarginContainer = $ItemTile
 
 var _item_res : GameplayItemInstance = null
+## 槽位索引（用于调试）
+var slot_index: int = -1
 
 signal mouse_button_left_pressed(item_res : GameplayItemInstance)
 signal mouse_button_right_pressed(item_res : GameplayItemInstance)
@@ -38,3 +40,6 @@ func set_item(value : GameplayItemInstance) -> void:
 		item_tile.show()
 	else:
 		item_tile.hide()
+
+func get_item() -> GameplayItemInstance:
+	return _item_res

@@ -74,6 +74,34 @@ func set_quantity(value: int) -> void:
 	if quantity != old_quantity:
 		quantity_changed.emit(quantity)
 
+## 比较两个物品实例的排序顺序
+## other: 另一个物品实例
+## 返回 true 表示当前物品应该排在前面，false 表示应该排在后面
+## 排序规则：1. item_type.sort_order 2. gameplay_item.sort_order 3. item_id
+func compare_type_to(other: GameplayItemInstance) -> bool:
+	if not is_instance_valid(other) or not is_instance_valid(other.item_config):
+		return false
+	
+	if not ItemManager:
+		return false
+	
+	var item_type: GameplayItemType = ItemManager.get_item_type(item_config.item_type_id)
+	var other_item_type: GameplayItemType = ItemManager.get_item_type(other.item_config.item_type_id)
+	
+	if not is_instance_valid(item_type) or not is_instance_valid(other_item_type):
+		return false
+	
+	# 1. 首先比较 item_type.sort_order
+	if item_type.sort_order != other_item_type.sort_order:
+		return item_type.sort_order < other_item_type.sort_order
+	
+	# 2. 如果 item_type.sort_order 相同，比较 gameplay_item.sort_order
+	if item_config.sort_order != other.item_config.sort_order:
+		return item_config.sort_order < other.item_config.sort_order
+	
+	# 3. 如果 sort_order 都相同，按 item_id 排序
+	return item_config.item_id < other.item_config.item_id
+
 ## 生成实例唯一ID
 func _generate_instance_id() -> String:
 	return str(Time.get_ticks_msec()) + "_" + str(randi())

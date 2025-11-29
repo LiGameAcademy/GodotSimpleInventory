@@ -17,3 +17,19 @@ class_name GameplayEquipType
 
 ## 排序优先级（用于UI显示）
 @export var sort_order: int = 0
+
+func _init(
+        p_type_id: StringName = "",
+        p_display_name: String = "",
+        p_icon: Texture2D = null,
+        p_allow_multiple: bool = false,
+        p_sort_order: int = 0
+        ) -> void:
+    type_id = p_type_id
+    display_name = p_display_name
+    icon = p_icon
+    allow_multiple = p_allow_multiple
+    sort_order = p_sort_order
+
+func compare_to(other: GameplayEquipType) -> bool:
+    return sort_order < other.sort_order

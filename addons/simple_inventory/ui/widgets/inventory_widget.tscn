@@ -194,3 +194,7 @@ theme_override_fonts/font = ExtResource("2_kg5ao")
 text = "整理"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="tab_changed" from="MarginContainer/VBoxContainer/MarginContainer3/TabBar" to="." method="_on_tab_bar_tab_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer/ButtonDecompose" to="." method="_on_button_decompose_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer4/HBoxContainer/ButtonPack" to="." method="_on_button_pack_pressed"]

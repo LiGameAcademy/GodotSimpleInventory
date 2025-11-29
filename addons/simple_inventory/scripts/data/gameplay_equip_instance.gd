@@ -27,3 +27,40 @@ func get_equip_type_resource() -> GameplayEquipType:
 		return null
 	
 	return ItemManager.get_equip_type(type_id)
+
+## 比较两个装备实例的排序顺序
+## 排序规则：1. item_type.sort_order 2. equip_type.sort_order（如果另一个也是装备） 3. gameplay_item.sort_order 4. item_id
+func compare_type_to(other: GameplayItemInstance) -> bool:
+	if not is_instance_valid(other) or not is_instance_valid(other.item_config):
+		return false
+	
+	if not ItemManager:
+		return false
+	
+	# 1. 首先比较 item_type.sort_order
+	var item_type: GameplayItemType = ItemManager.get_item_type(item_config.item_type_id)
+	var other_item_type: GameplayItemType = ItemManager.get_item_type(other.item_config.item_type_id)
+	
+	if not is_instance_valid(item_type) or not is_instance_valid(other_item_type):
+		return false
+	
+	if item_type.sort_order != other_item_type.sort_order:
+		return item_type.sort_order < other_item_type.sort_order
+	
+	# 2. 如果 item_type.sort_order 相同，且另一个也是装备实例，比较 equip_type.sort_order
+	if other is GameplayEquipInstance:
+		var other_equip: GameplayEquipInstance = other as GameplayEquipInstance
+		
+		var equip_type: GameplayEquipType = get_equip_type_resource()
+		var other_equip_type: GameplayEquipType = other_equip.get_equip_type_resource()
+		
+		if is_instance_valid(equip_type) and is_instance_valid(other_equip_type):
+			if equip_type.sort_order != other_equip_type.sort_order:
+				return equip_type.sort_order < other_equip_type.sort_order
+	
+	# 3. 比较 gameplay_item.sort_order
+	if item_config.sort_order != other.item_config.sort_order:
+		return item_config.sort_order < other.item_config.sort_order
+	
+	# 4. 如果 sort_order 都相同，按 item_id 排序
+	return item_config.item_id < other.item_config.item_id

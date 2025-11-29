@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://b8fau1k8y5ynq"]
 
 [ext_resource type="Script" uid="uid://0qe4c4res5uo" path="res://addons/simple_inventory/scripts/components/equipment_component.gd" id="1_ex5j3"]
-[ext_resource type="Script" uid="uid://d00u1pw6srkpo" path="res://src/entity/player.gd" id="1_i70u7"]
+[ext_resource type="Script" uid="uid://d00u1pw6srkpo" path="res://entity/player.gd" id="1_i70u7"]
 [ext_resource type="Script" uid="uid://flbpqf24gt4s" path="res://addons/simple_inventory/scripts/components/inventory_component.gd" id="2_76mi7"]
 [ext_resource type="Script" uid="uid://dkcyvy2k70v3" path="res://addons/simple_inventory/scripts/data/gameplay_equip_slot_config.gd" id="2_bgrip"]
 [ext_resource type="Resource" uid="uid://8axm4prjucfa" path="res://addons/simple_inventory/assets/data/equip_slots/feet_equip_slot.tres" id="3_i70u7"]

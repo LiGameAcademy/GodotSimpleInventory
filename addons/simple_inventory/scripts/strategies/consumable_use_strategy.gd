@@ -3,7 +3,7 @@ class_name ConsumableUseStrategy
 
 ## 消耗品使用策略
 
-func use_item(item: GameplayItemInstance, user: Node) -> bool:
+func use_item(item: GameplayItemInstance, user: Node, slot_index: int = -1) -> bool:
 	if not is_instance_valid(item) or not is_instance_valid(item.item_config):
 		return false
 	

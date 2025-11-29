@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b5c5g8gyika7d"]
 
-[ext_resource type="Script" uid="uid://crt8oxyn48x1v" path="res://addons/simple_inventory/ui/item_tip.gd" id="1_cg4ha"]
+[ext_resource type="Script" uid="uid://crt8oxyn48x1v" path="res://addons/simple_inventory/ui/tips/item_tip.gd" id="1_cg4ha"]
 [ext_resource type="Texture2D" uid="uid://byp2acad4ffjv" path="res://icon.svg" id="2_3n0ao"]
 [ext_resource type="FontFile" uid="uid://bj4wlflwm0lq7" path="res://addons/simple_inventory/assets/fonts/SourceHanSansSC-Regular-2.otf" id="3_u1cdg"]
 
@@ -12,14 +12,11 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 script = ExtResource("1_cg4ha")
 
-[node name="Panel" type="ColorRect" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 2
-color = Color(0.254902, 0.254902, 0.254902, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -34,7 +31,7 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="tr_icon" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="TextureRectIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -45,7 +42,7 @@ expand_mode = 1
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="lab_name" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="LabelName" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -53,7 +50,7 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("3_u1cdg")
 text = "道具名称"
 
-[node name="lab_count" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="LabelCount" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -82,8 +79,9 @@ text = "道具简介"
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 
-[node name="lab_des" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer3"]
+[node name="LabelDescription" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer3"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
@@ -91,30 +89,3 @@ theme_override_fonts/font = ExtResource("3_u1cdg")
 theme_override_font_sizes/font_size = 12
 text = "道具简介道具简介道具简介道具简介道具简介道具简介道具简介"
 autowrap_mode = 1
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-
-[node name="lab_attribute_title" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_u1cdg")
-theme_override_font_sizes/font_size = 8
-text = "属性"
-
-[node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-
-[node name="lab_attribute" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer4"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("3_u1cdg")
-theme_override_font_sizes/font_size = 12
-text = "属性名：属性值"

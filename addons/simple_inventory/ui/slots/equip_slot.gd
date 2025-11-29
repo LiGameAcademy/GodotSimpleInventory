@@ -15,11 +15,20 @@ func _display_equip_slot() -> void:
 	if not is_instance_valid(equip_slot):
 		return
 	slot_icon.texture = equip_slot.slot_texture
+	# 有装备时隐藏槽图标，无装备时显示槽图标
+	slot_icon.visible = not is_instance_valid(_item_res)
 	item_tile.visible = is_instance_valid(_item_res)
 
 func set_item(value : GameplayItemInstance) -> void:
+	_item_res = value
+	# 有装备时隐藏槽图标，无装备时显示槽图标
+	slot_icon.visible = not is_instance_valid(value)
 	item_tile.visible = is_instance_valid(value)
-	super(value)
+	if is_instance_valid(value):
+		item_tile.update_display(value)
+		item_tile.show()
+	else:
+		item_tile.hide()
 
 ## 获取槽位ID（用于 UI 兼容）
 func get_slot_id() -> StringName:

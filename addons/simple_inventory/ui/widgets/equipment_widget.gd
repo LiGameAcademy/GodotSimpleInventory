@@ -85,9 +85,14 @@ func _on_mouse_button_right_pressed(item_res: GameplayItemInstance, slot_id: Str
 	if not is_instance_valid(item_res):
 		push_error("EquipmentWidget: item_res is not valid")
 		return
-	var success: bool = equipment_component.unequip_item(slot_id)
+	
+	# 获取背包组件（从装备组件的父节点获取）
+	var user: Node = equipment_component.get_parent()
+	var inventory_component: InventoryComponent = InventoryComponent.get_inventory_component(user) if is_instance_valid(user) else null
+	
+	var success: bool = equipment_component.unequip_item(slot_id, inventory_component)
 	if not success:
-		push_error("EquipmentWidget: unequip_item failed")
+		push_error("EquipmentWidget: unequip_item failed (背包可能已满)")
 		return
 
 ## 装备变化信号处理

@@ -72,6 +72,7 @@ func initialize(component: InventoryComponent) -> void:
 	
 	# 连接信号
 	_inventory_component.item_changed.connect(_on_item_changed)
+	_inventory_component.max_slot_count_changed.connect(_on_max_slot_count_changed)
 	
 	# 初始化槽位连接
 	_initialize_slots()
@@ -240,11 +241,13 @@ func _initialize_slots() -> void:
 		push_error("InventoryWidget: max_slot_count must be greater than 0")
 		return
 	
-	# 获取当前槽位数量（只计算 item_slot 组的节点）
-	var current_slots: Array[Node] = []
+	# 获取当前槽位数量（只计算 ItemSlot 类型的节点，与 _connect_slot_signals 保持一致）
+	var current_slots: Array[ItemSlot] = []
 	for child in grid_container.get_children():
-		if child.is_in_group("item_slot"):
-			current_slots.append(child)
+		if child is ItemSlot:
+			var slot: ItemSlot = child as ItemSlot
+			if is_instance_valid(slot):
+				current_slots.append(slot)
 	
 	var current_slot_count: int = current_slots.size()
 	
@@ -253,23 +256,22 @@ func _initialize_slots() -> void:
 		var slots_to_add: int = target_slot_count - current_slot_count
 		for i in range(slots_to_add):
 			var new_slot: Node = ITEM_SLOT_SCENE.instantiate()
-			if is_instance_valid(new_slot):
+			if is_instance_valid(new_slot) and new_slot is ItemSlot:
 				grid_container.add_child(new_slot)
-				current_slots.append(new_slot)
+				current_slots.append(new_slot as ItemSlot)
 			else:
-				push_error("InventoryWidget: failed to instantiate item_slot")
+				push_error("InventoryWidget: failed to instantiate item_slot or invalid type")
 	
 	# 如果槽位太多，移除多余的槽位
 	elif current_slot_count > target_slot_count:
 		var slots_to_remove: int = current_slot_count - target_slot_count
-		# 从后往前移除，避免索引问题
+		# 直接获取最后 N 个槽位进行删除，避免遍历时修改数组的问题
 		for i in range(slots_to_remove):
 			var index_to_remove: int = current_slots.size() - 1 - i
 			if index_to_remove >= 0 and index_to_remove < current_slots.size():
-				var slot_to_remove: Node = current_slots[index_to_remove]
+				var slot_to_remove: ItemSlot = current_slots[index_to_remove]
 				if is_instance_valid(slot_to_remove):
 					slot_to_remove.queue_free()
-					current_slots.remove_at(index_to_remove)
 	
 	# 连接所有槽位的信号
 	_connect_slot_signals()
@@ -279,9 +281,15 @@ func _connect_slot_signals() -> void:
 	if not is_instance_valid(grid_container):
 		return
 	
-	var index: int = 0
-	for slot in grid_container.get_children():
-		if not slot.is_in_group("item_slot"):
+	# 只遍历 ItemSlot 类型的节点，使用它们在组中的实际索引
+	var slot_index: int = 0
+	for child in grid_container.get_children():
+		# 只处理 ItemSlot 类型的节点
+		if not child is ItemSlot:
+			continue
+		
+		var slot: ItemSlot = child as ItemSlot
+		if not is_instance_valid(slot):
 			continue
 		
 		# 断开之前的连接（如果存在）
@@ -290,10 +298,13 @@ func _connect_slot_signals() -> void:
 		if slot.mouse_button_right_pressed.is_connected(_on_mouse_button_right_pressed):
 			slot.mouse_button_right_pressed.disconnect(_on_mouse_button_right_pressed)
 		
-		# 连接新的信号
-		slot.mouse_button_left_pressed.connect(_on_mouse_button_left_pressed.bind(index))
+		# 设置槽位索引（用于调试）
+		slot.slot_index = slot_index
+		
+		# 连接新的信号（使用槽位在组中的索引，而不是在grid_container中的索引）
+		slot.mouse_button_left_pressed.connect(_on_mouse_button_left_pressed.bind(slot_index))
 		slot.mouse_button_right_pressed.connect(_on_mouse_button_right_pressed.bind(slot))
-		index += 1
+		slot_index += 1
 
 ## 初始化分类映射（从 ItemManager 读取物品类型配置并设置 TabBar）
 func _initialize_category_map() -> void:
@@ -392,17 +403,46 @@ func _use_item(display_index: int) -> void:
 		push_warning("InventoryWidget: item not found in inventory")
 		return
 	
-	# 使用物品
-	var user: Node = get_tree().current_scene if get_tree() else null
-	_inventory_component.use_item(actual_index, user)
+	# 使用物品（user 参数可选，如果不提供则使用组件的所有者）
+	_inventory_component.use_item(actual_index)
 
-## 分解道具
-func _on_btn_decompose_pressed() -> void:
+#endregion
+
+#region ========== 信号处理 ==========
+## 鼠标左键点击
+func _on_mouse_button_left_pressed(item: GameplayItemInstance, index: int) -> void:
+	if not is_instance_valid(item):
+		return
+	print("InventoryWidget: _on_mouse_button_left_pressed: ", item.item_config.display_name, " index: ", index)
+	selected_index = index
+
+## 鼠标右键点击
+func _on_mouse_button_right_pressed(item: GameplayItemInstance, _slot: ItemSlot) -> void:
+	# 使用物品
+	# 注意：需要使用显示数据中的索引，而不是槽位索引
+	var display_index: int = _find_item_index_in_display(item)
+	if display_index >= 0:
+		_use_item(display_index)
+
+func _on_item_changed() -> void:
+	update_display()
+
+## 处理最大槽位数量变化
+func _on_max_slot_count_changed(old_count: int, new_count: int) -> void:
+	# 重新初始化槽位（动态调整槽位数量）
+	_initialize_slots()
+	# 更新显示
+	update_display()
+
+func _on_tab_bar_tab_changed(tab: int) -> void:
+	switch_category_tab(tab)
+
+func _on_button_decompose_pressed() -> void:
 	var slot: ItemSlot = get_slot(selected_index) as ItemSlot
 	if not is_instance_valid(slot):
 		return
 	
-	var selected_item: GameplayItemInstance = slot.item
+	var selected_item: GameplayItemInstance = slot.get_item()
 	if not is_instance_valid(selected_item):
 		return
 	
@@ -418,31 +458,10 @@ func _on_btn_decompose_pressed() -> void:
 	else:
 		push_error("InventoryWidget: _inventory_component is not valid")
 
-## 整理背包
-func _on_btn_pack_pressed() -> void:
+func _on_button_pack_pressed() -> void:
 	if is_instance_valid(_inventory_component):
 		_inventory_component.pack_items()
 	else:
 		push_error("InventoryWidget: _inventory_component is not valid")
 
-#endregion
-
-#region ========== 信号处理 ==========
-## 鼠标左键点击
-func _on_mouse_button_left_pressed(index: int) -> void:
-	selected_index = index
-
-## 鼠标右键点击
-func _on_mouse_button_right_pressed(slot: ItemSlot) -> void:
-	# 使用物品
-	# 注意：需要使用显示数据中的索引，而不是槽位索引
-	var display_index: int = _find_item_index_in_display(slot.item)
-	if display_index >= 0:
-		_use_item(display_index)
-
-func _on_tab_bar_tab_changed(tab: int) -> void:
-	switch_category_tab(tab)
-
-func _on_item_changed() -> void:
-	update_display()
 #endregion

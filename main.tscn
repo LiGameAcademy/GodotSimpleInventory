@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bq7a5laqorynj" path="res://main.gd" id="1_ccqct"]
 [ext_resource type="PackedScene" uid="uid://cgv4kbrho80c8" path="res://addons/simple_inventory/ui/widgets/inventory_panel.tscn" id="2_7smc8"]
-[ext_resource type="PackedScene" uid="uid://b8fau1k8y5ynq" path="res://src/entity/player.tscn" id="3_liq35"]
+[ext_resource type="PackedScene" uid="uid://b8fau1k8y5ynq" path="res://entity/player.tscn" id="3_liq35"]
 [ext_resource type="Texture2D" uid="uid://wnp6rxvtmm2a" path="res://icon.png" id="4_nntte"]
 
 [node name="main" type="Node2D"]
@@ -10,6 +10,9 @@ script = ExtResource("1_ccqct")
 
 [node name="player" parent="." instance=ExtResource("3_liq35")]
 unique_name_in_owner = true
+
+[node name="InventoryComponent" parent="player" index="1"]
+max_slot_count = 10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -58,3 +61,5 @@ text = "提交"
 [connection signal="pressed" from="CanvasLayer/InventoryButton" to="." method="_on_texture_button_pressed"]
 [connection signal="text_submitted" from="CanvasLayer/w_GM/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="CanvasLayer/w_GM/HBoxContainer/btn_submit" to="." method="_on_btn_submit_pressed"]
+
+[editable path="player"]
