@@ -25,6 +25,7 @@ func _ready() -> void:
 ## 添加物品
 func add_item(item: GameplayItemInstance) -> bool:
 	if not is_instance_valid(item):
+		push_error("InventoryComponent: 物品无效")
 		return false
 	
 	# 尝试堆叠到现有物品
@@ -40,6 +41,7 @@ func add_item(item: GameplayItemInstance) -> bool:
 	# 查找空槽位
 	var empty_index: int = get_empty_index()
 	if empty_index == -1:
+		push_error("InventoryComponent: 没有空槽位")
 		return false
 	
 	items[empty_index] = item
@@ -74,6 +76,7 @@ func get_empty_index() -> int:
 func add_item_by_id(item_id: StringName, quantity: int = 1) -> bool:
 	var item_instance: GameplayItemInstance = _item_factory.create_item(item_id, quantity)
 	if not is_instance_valid(item_instance):
+		push_error("InventoryComponent: 创建物品失败: " + item_id)
 		return false
 	return add_item(item_instance)
 

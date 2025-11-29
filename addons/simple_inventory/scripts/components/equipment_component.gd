@@ -71,11 +71,51 @@ func unequip_item(slot_id: StringName) -> bool:
 
 ## 获取装备
 func get_equip(slot_id: StringName) -> GameplayEquipInstance:
-	return equipped_items.get(slot_id)
+	return equipped_items.get(slot_id, null)
 
 ## 装备到指定槽位
 func _equip_to_slot(equip: GameplayEquipInstance, slot_id: StringName) -> bool:
-	var old_equip: GameplayEquipInstance = equipped_items.get(slot_id)
+	# 检查槽位是否存在
+	if not equip_slot_configs.has(slot_id):
+		push_error("EquipmentComponent: 槽位不存在: " + str(slot_id))
+		return false
+	
+	# 检查该装备是否已经装备在其他槽位上
+	for existing_slot_id in equipped_items.keys():
+		if equipped_items[existing_slot_id] == equip:
+			# 如果装备在另一个槽位上，先卸载
+			unequip_item(existing_slot_id)
+			break
+	
+	# 获取槽位配置
+	var config: GameplayEquipSlotConfig = equip_slot_configs[slot_id]
+	if not is_instance_valid(config):
+		push_error("EquipmentComponent: 槽位配置无效: " + str(slot_id))
+		return false
+	
+	# 检查槽位类型是否匹配
+	var equip_type: GameplayEquipType = equip.get_equip_type_resource()
+	if not is_instance_valid(equip_type):
+		push_error("EquipmentComponent: 装备类型无效")
+		return false
+	
+	var slot_equip_type: GameplayEquipType = config.get_equip_type()
+	if not is_instance_valid(slot_equip_type):
+		push_error("EquipmentComponent: 槽位装备类型无效")
+		return false
+	
+	if slot_equip_type.type_id != equip_type.type_id:
+		push_error("EquipmentComponent: 装备类型不匹配，槽位类型: " + str(slot_equip_type.type_id) + ", 装备类型: " + str(equip_type.type_id))
+		return false
+	
+	# 检查是否允许多个装备（如果不允许且槽位已有装备，先卸载旧装备）
+	if not config.allow_multiple and equipped_items.has(slot_id):
+		var old_equip: GameplayEquipInstance = equipped_items[slot_id]
+		if is_instance_valid(old_equip):
+			# 先卸载旧装备（但不发射信号，因为后面会发射新装备的信号）
+			equipped_items.erase(slot_id)
+	
+	# 装备新装备
 	equipped_items[slot_id] = equip
 	equip_changed.emit(slot_id, equip)
 	return true

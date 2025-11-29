@@ -68,8 +68,7 @@ func set_quantity(value: int) -> void:
 		push_error("GameplayItemInstance: gameplay item config is not valid!")
 		return
 	if value < 0 or value > item_config.max_stack:
-		push_error("GameplayItemInstance: quantity is out of range!")
-		return
+		push_warning("GameplayItemInstance: quantity is out of range!")
 	var old_quantity: int = quantity
 	quantity = clamp(value, 0, item_config.max_stack)
 	if quantity != old_quantity:
