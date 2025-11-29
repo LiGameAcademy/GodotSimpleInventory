@@ -112,6 +112,43 @@ func test_inventory_component() -> void:
 		var item_count: int = inventory.get_item_count("test_id_item")
 		assert_equal(item_count, 1, "移除后应该还剩1个物品")
 	
+	# 测试9: 设置最大槽位数量（扩容）
+	var expand_result: bool = inventory.set_max_slot_count(15)
+	assert_true(expand_result, "应该能扩容背包")
+	assert_equal(inventory.max_slot_count, 15, "最大槽位数应该变为15")
+	assert_equal(inventory.items.size(), 15, "items数组大小应该变为15")
+	
+	# 测试10: 设置最大槽位数量（缩容 - 安全模式）
+	# 先添加一些物品到新槽位
+	var item_config3: GameplayItem = GameplayItem.new()
+	item_config3.item_id = "test_item_3"
+	item_config3.display_name = "测试物品3"
+	item_config3.max_stack = 1
+	for i in range(5):
+		var item: GameplayItemInstance = GameplayItemInstance.new(item_config3, 1)
+		inventory.add_item(item)
+	
+	# 尝试缩小到10（应该失败，因为当前有超过10个物品）
+	var shrink_result: bool = inventory.set_max_slot_count(10, false)
+	assert_false(shrink_result, "缩容应该失败（当前物品数量超过新容量）")
+	assert_equal(inventory.max_slot_count, 15, "最大槽位数应该保持为15")
+	
+	# 测试11: 设置最大槽位数量（缩容 - 强制模式）
+	var force_shrink_result: bool = inventory.set_max_slot_count(10, true)
+	assert_true(force_shrink_result, "强制缩容应该成功")
+	assert_equal(inventory.max_slot_count, 10, "最大槽位数应该变为10")
+	assert_equal(inventory.items.size(), 10, "items数组大小应该变为10")
+	
+	# 测试12: 设置自定义排序器
+	var custom_sorter: InventorySorter = InventorySorter.new()
+	inventory.set_sorter(custom_sorter)
+	# 验证排序器已设置（通过调用排序方法验证）
+	var test_items: Array[GameplayItemInstance] = []
+	var test_item: GameplayItemInstance = GameplayItemInstance.new(item_config3, 1)
+	test_items.append(test_item)
+	var sorted: Array[GameplayItemInstance] = inventory._inventory_sorter.sort(test_items)
+	assert_equal(sorted.size(), 1, "自定义排序器应该正常工作")
+	
 	# 清理
 	scene.queue_free()
 	
