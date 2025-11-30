@@ -10,7 +10,7 @@ English | [简体中文](README_zh.md)
 
 ## Overview
 
-GodotGear is a user-friendly inventory system plugin for Godot 4.x that provides a solid foundation for managing items, equipment, and inventory in your games. It's designed to be both simple to use and flexible enough to adapt to various game genres.
+`SimpleInventory` is a user-friendly inventory system plugin for Godot 4.x that provides a solid foundation for managing items, equipment, and inventory in your games. It's designed to be both simple to use and flexible enough to adapt to various game genres.
 
 ## Features
 
@@ -159,7 +159,7 @@ The plugin follows a component-based architecture:
 
 - 📋 [Refactoring Plan](./REFACTORING_PLAN.md) - Detailed architecture refactoring plan and technical roadmap
 - 📋 [Manual Test Cases](./docs/MANUAL_TEST_CASES.md) - Comprehensive manual testing guide
-- 📚 For detailed documentation and examples, please visit our [Wiki](https://github.com/Liweimin0512/GodotGear/wiki) *(Coming soon)*
+- 📚 For detailed documentation and examples, please visit our [Wiki](https://github.com/LiGameAcademy/GodotSimpleInventory/wiki) *(Coming soon)*
 
 ## Contributing
 

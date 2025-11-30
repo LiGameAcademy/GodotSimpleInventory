@@ -167,7 +167,7 @@ inventory_component.set_max_slot_count(30)
 
 ### 项目文档
 
-- [手动测试用例](./docs/MANUAL_TEST_CASES.md)
+- [手动测试用例](./addons/simple_inventory/docs/MANUAL_TEST_CASES.md)
 
 ## 🧪 测试
 

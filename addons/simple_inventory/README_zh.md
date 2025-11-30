@@ -10,7 +10,7 @@
 
 ## 概述
 
-GodotGear 是一个为 Godot 4.x 开发的用户友好的背包系统插件，为游戏中的物品、装备和背包管理提供了坚实的基础。它的设计既简单易用，又足够灵活，可以适应各种不同类型的游戏。
+`simple_inventory` 是一个为 Godot 4.x 开发的用户友好的背包系统插件，为游戏中的物品、装备和背包管理提供了坚实的基础。它的设计既简单易用，又足够灵活，可以适应各种不同类型的游戏。
 
 ## 特性
 
@@ -159,7 +159,7 @@ inventory_component.set_sorter(custom_sorter)
 
 - 📋 [重构计划文档](./REFACTORING_PLAN.md) - 详细的架构重构计划和技术路线图
 - 📋 [手动测试用例](./docs/MANUAL_TEST_CASES.md) - 全面的手动测试指南
-- 📚 详细文档和示例请访问我们的 [Wiki](https://github.com/Liweimin0512/GodotGear/wiki) *（即将推出）*
+- 📚 详细文档和示例请访问我们的 [Wiki](https://github.com/LiGameAcademy/GodotSimpleInventory/wiki) *（即将推出）*
 
 ## 贡献
 
