@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5c5g8gyika7d"]
+[gd_scene load_steps=3 format=3 uid="uid://b5c5g8gyika7d"]
 
 [ext_resource type="Script" uid="uid://crt8oxyn48x1v" path="res://addons/simple_inventory/ui/tips/item_tip.gd" id="1_cg4ha"]
-[ext_resource type="Texture2D" uid="uid://byp2acad4ffjv" path="res://icon.svg" id="2_3n0ao"]
 [ext_resource type="FontFile" uid="uid://bj4wlflwm0lq7" path="res://addons/simple_inventory/assets/fonts/SourceHanSansSC-Regular-2.otf" id="3_u1cdg"]
 
 [node name="item_tip" type="MarginContainer"]
@@ -35,7 +34,6 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("2_3n0ao")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]

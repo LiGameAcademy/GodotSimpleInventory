@@ -1,5 +1,7 @@
 # GodotGear
 
+未发布试点：实测Godot 4.7.2。首次启用后重启Godot加载单例；既有同名单例受到保护。当前接入约束见[迁移说明](docs/pilot_migration.md)与[变更记录](../../CHANGELOG.md)，下文示例对应早期版本。
+
 一个轻量级、灵活的 Godot 4.x 背包系统插件
 
 ![Godot v4.x](https://img.shields.io/badge/Godot-v4.x-blue)

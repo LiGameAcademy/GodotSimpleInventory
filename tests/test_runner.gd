@@ -8,6 +8,7 @@ var total_tests: int = 0
 var passed_tests: int = 0
 var failed_tests: int = 0
 var test_results: Array[Dictionary] = []
+var suite_completed: bool = false
 
 ## 运行所有测试
 func run_all_tests() -> void:
@@ -25,6 +26,8 @@ func run_all_tests() -> void:
 	run_test_suite("ItemMerger", TestItemMerger.new())
 	run_test_suite("InventorySorter", TestInventorySorter.new())
 	run_test_suite("EquipmentComponent", TestEquipmentComponent.new())
+	run_test_suite("InventorySafety", TestInventorySafety.new())
+	run_test_suite("InventorySnapshot", TestInventorySnapshot.new())
 	
 	# 打印总结
 	print("\n========== 测试总结 ==========")
@@ -36,7 +39,7 @@ func run_all_tests() -> void:
 	# 打印失败的测试
 	if failed_tests > 0:
 		print("\n失败的测试:")
-		for result in test_results:
+		for result: Dictionary in test_results:
 			if not result.success:
 				print("  - %s.%s: %s" % [result.suite, result.test, result.message])
 
@@ -67,11 +70,17 @@ func run_test_suite(suite_name: String, test_instance: TestRunner) -> void:
 			method_name = "test_inventory_sorter"
 		"EquipmentComponent":
 			method_name = "test_equipment_component"
+		"InventorySafety":
+			method_name = "test_inventory_safety"
+		"InventorySnapshot":
+			method_name = "test_inventory_snapshot"
 	
 	if not method_name.is_empty() and test_instance.has_method(method_name):
 		test_instance.call(method_name)
 	else:
-		push_error("测试套件 %s 未找到测试方法 %s" % [suite_name, method_name])
+		test_instance.assert_true(false, "测试套件 %s 未找到方法 %s" % [suite_name, method_name])
+	# 脚本运行错误可能中断套件，不能把已执行的少量断言当作全套通过。
+	test_instance.assert_true(test_instance.suite_completed, "%s 套件未完整执行" % suite_name)
 	
 	# 同步状态
 	total_tests = test_instance.total_tests
@@ -82,6 +91,7 @@ func run_test_suite(suite_name: String, test_instance: TestRunner) -> void:
 	var suite_passed: int = passed_tests - suite_passed_before
 	var suite_failed: int = failed_tests - suite_failed_before
 	print("  %s: 通过 %d, 失败 %d\n" % [suite_name, suite_passed, suite_failed])
+	test_instance.free()
 
 ## 断言函数
 func assert_true(condition: bool, message: String = "") -> bool:
@@ -92,6 +102,7 @@ func assert_true(condition: bool, message: String = "") -> bool:
 	else:
 		failed_tests += 1
 		var error_msg: String = message if not message.is_empty() else "断言失败: 期望为 true"
+		test_results.append({"suite": get_script().resource_path, "test": "assert", "message": error_msg, "success": false})
 		push_error("测试失败: " + error_msg)
 		return false
 

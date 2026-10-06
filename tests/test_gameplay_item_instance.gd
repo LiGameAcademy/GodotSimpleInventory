@@ -54,4 +54,5 @@ func test_gameplay_item_instance() -> void:
 	instance4.set_quantity(-1)  # 负数
 	assert_equal(instance4.quantity, 0, "数量应该被限制为0")
 	
+	suite_completed = true
 	print("  ✓ GameplayItemInstance 测试完成")

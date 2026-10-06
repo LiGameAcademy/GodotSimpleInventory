@@ -76,5 +76,6 @@ func test_item_merger() -> void:
 	
 	assert_greater_than(valid_count, 0, "应该包含有效物品")
 	
+	suite_completed = true
 	print("  ✓ ItemMerger 测试完成")
 

@@ -134,4 +134,5 @@ func test_inventory_sorter() -> void:
 	
 	assert_equal(valid_count, 2, "应该只包含2个有效物品")
 	
+	suite_completed = true
 	print("  ✓ InventorySorter 测试完成")

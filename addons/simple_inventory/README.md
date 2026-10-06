@@ -1,5 +1,7 @@
 # GodotGear
 
+Unreleased pilot: tested on Godot 4.7.2. Restart Godot after first enabling the plugin. Existing same-name singletons are preserved. See [migration notes](docs/pilot_migration.md) and [changelog](../../CHANGELOG.md); the examples below describe the earlier release.
+
 A lightweight, flexible inventory system plugin for Godot 4.x
 
 ![Godot v4.x](https://img.shields.io/badge/Godot-v4.x-blue)

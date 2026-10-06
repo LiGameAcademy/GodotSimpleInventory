@@ -11,6 +11,7 @@ var quantity: int = 1
 var current_durability: float = 100.0
 ## 实例唯一ID
 var instance_id: String = ""  # 实例唯一ID
+var _container: WeakRef
 
 ## 数量变化信号
 signal quantity_changed(value: int)
@@ -42,7 +43,24 @@ func can_merge_with(other: GameplayItemInstance) -> bool:
 	if not is_instance_valid(item_config) or not is_instance_valid(other) or not is_instance_valid(other.item_config):
 		push_error("GameplayItemInstance: gameplay item config or other item instance or other item config is not valid")
 		return false
-	return item_config.item_id == other.item_config.item_id
+	# 装备实例带强化/附魔等独立状态，不参与普通堆叠。
+	if other == self or self is GameplayEquipInstance or other is GameplayEquipInstance:
+		return false
+	return item_config == other.item_config and current_durability == other.current_durability
+
+## 一个运行实例只能属于一个背包或装备组件；容器释放后不会被实例保活。
+func get_container() -> Node:
+	return _container.get_ref() as Node if _container != null else null
+
+func claim_container(container: Node) -> bool:
+	if not is_instance_valid(container) or get_container() != null:
+		return false
+	_container = weakref(container)
+	return true
+
+func release_container(container: Node) -> void:
+	if get_container() == container:
+		_container = null
 
 ## 合并物品
 func merge(other: GameplayItemInstance) -> bool:

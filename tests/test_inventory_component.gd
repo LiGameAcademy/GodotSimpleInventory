@@ -152,4 +152,5 @@ func test_inventory_component() -> void:
 	# 清理
 	scene.queue_free()
 	
+	suite_completed = true
 	print("  ✓ InventoryComponent 测试完成")
