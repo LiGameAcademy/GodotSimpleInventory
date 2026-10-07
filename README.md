@@ -1,6 +1,6 @@
 # GodotSimpleInventory
 
-本地开源试点改动尚未发布。当前实测Godot 4.7.2；首次启用插件需重启。接入约束见[迁移说明](addons/simple_inventory/docs/pilot_migration.md)，运行验证见[测试说明](tests/README.md)。
+开源试点开发分支：`feat/open-source-pilot`，尚未发布正式版本。当前实测Godot 4.7.2；首次启用插件需重启。接入约束见[迁移说明](addons/simple_inventory/docs/pilot_migration.md)，运行验证见[测试说明](tests/README.md)，教学定位与本轮验证见[项目说明](docs/project_status.md)。
 
 一个基于 Godot 4.5 开发的简单库存系统项目，旨在演示如何使用 Godot 开发复杂的 UI 模块并用于教学。
 
