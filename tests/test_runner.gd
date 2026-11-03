@@ -28,6 +28,7 @@ func run_all_tests() -> void:
 	run_test_suite("EquipmentComponent", TestEquipmentComponent.new())
 	run_test_suite("InventorySafety", TestInventorySafety.new())
 	run_test_suite("InventorySnapshot", TestInventorySnapshot.new())
+	run_test_suite("InventoryReceipts", TestInventoryReceipts.new())
 	
 	# 打印总结
 	print("\n========== 测试总结 ==========")
@@ -74,6 +75,8 @@ func run_test_suite(suite_name: String, test_instance: TestRunner) -> void:
 			method_name = "test_inventory_safety"
 		"InventorySnapshot":
 			method_name = "test_inventory_snapshot"
+		"InventoryReceipts":
+			method_name = "test_inventory_receipts"
 	
 	if not method_name.is_empty() and test_instance.has_method(method_name):
 		test_instance.call(method_name)

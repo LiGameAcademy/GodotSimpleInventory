@@ -1,5 +1,11 @@
 # 教学定位与开源试点状态
 
+## 2026-11-03 插件发行收口
+
+权威源码仍在本仓库addons/simple_inventory，插件发行库为https://github.com/LiGameAcademy/laoli_simple_inventory，由git subtree split生成。已补items_received及回归，覆盖完整堆叠和读档不计入收集目标。当前测试命令与范围见根README。
+
+默认UI已按用户选择迁移到确认来源的Cryo素材。物品图集确认来自Shikashi，字体内嵌元数据确认Adobe思源黑体2.004；对应署名和OFL已补齐。旧GUI.png与未使用且来源未确认的click音效从当前插件树移除。下方为10月试点阶段历史，不代表当前发行树仍待核验相同素材；教学工程其他素材、旧教程接口与人工交互验收不在此次声明范围。
+
 更新：2026-10-07。开发分支：`feat/open-source-pilot`；本轮代码提交：`a87fbd8`。提交到远端不等于正式版本发布，当前更新仍在 CHANGELOG 的 Unreleased 段落。
 
 ## 项目定位

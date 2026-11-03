@@ -16,6 +16,8 @@ var _item_user: Node
 var _equipment_component: EquipmentComponent
 
 ## 信号
+## Emitted once after successful add_item(), including fully merged stacks; never on restore.
+signal items_received(item_id: StringName, quantity: int)
 signal item_changed
 signal item_added(item: GameplayItemInstance, slot_index: int)
 signal item_removed(slot_index: int)
@@ -73,6 +75,8 @@ func add_item(item: GameplayItemInstance, slot_index: int = -1) -> bool:
 		return false
 	if not has_capacity_for(item):
 		return false
+	var received_id: StringName = item.item_config.item_id
+	var received_quantity: int = item.quantity
 	var updated: Array[int] = []
 	for index: int in range(items.size()):
 		var existing: GameplayItemInstance = items[index]
@@ -90,6 +94,7 @@ func add_item(item: GameplayItemInstance, slot_index: int = -1) -> bool:
 	if added_index >= 0:
 		item_added.emit(item, added_index)
 	item_changed.emit()
+	items_received.emit(received_id, received_quantity)
 	return true
 
 ## 仅计算容量，供容器间转交预检；不修改实例或发送信号。

@@ -1,14 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgv4kbrho80c8"]
 
 [ext_resource type="Script" uid="uid://d2ecqaj08xcly" path="res://addons/simple_inventory/ui/widgets/inventory_panel.gd" id="1_wkjvb"]
-[ext_resource type="Texture2D" uid="uid://b4mnhn6ma74vi" path="res://addons/simple_inventory/assets/textures/GUI.png" id="2_fj6vp"]
+[ext_resource type="Texture2D" uid="uid://bodenibynr88e" path="res://addons/simple_inventory/assets/textures/GUI_4x.png" id="2_fj6vp"]
 [ext_resource type="FontFile" uid="uid://bj4wlflwm0lq7" path="res://addons/simple_inventory/assets/fonts/SourceHanSansSC-Regular-2.otf" id="3_h6u1y"]
 [ext_resource type="PackedScene" uid="uid://difu7073qhw6m" path="res://addons/simple_inventory/ui/widgets/equipment_widget.tscn" id="4_nrdb8"]
 [ext_resource type="PackedScene" uid="uid://dva8745lj7y6t" path="res://addons/simple_inventory/ui/widgets/inventory_widget.tscn" id="5_wonev"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ldjmk"]
 atlas = ExtResource("2_fj6vp")
-region = Rect2(81, 97, 30, 30)
+region = Rect2(516, 196, 56, 56)
+size_override = Vector2(30, 30)
 
 [node name="InventoryPanel" type="MarginContainer"]
 script = ExtResource("1_wkjvb")
@@ -17,7 +18,7 @@ script = ExtResource("1_wkjvb")
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("2_fj6vp")
-region_rect = Rect2(0, 96, 48, 32)
+region_rect = Rect2(0, 0, 96, 96)
 patch_margin_left = 7
 patch_margin_top = 7
 patch_margin_right = 7
@@ -39,7 +40,7 @@ layout_mode = 2
 [node name="TextureRect" type="NinePatchRect" parent="MarginContainer2/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 texture = ExtResource("2_fj6vp")
-region_rect = Rect2(145, 81, 46, 14)
+region_rect = Rect2(0, 0, 96, 96)
 patch_margin_left = 3
 patch_margin_top = 2
 patch_margin_right = 3

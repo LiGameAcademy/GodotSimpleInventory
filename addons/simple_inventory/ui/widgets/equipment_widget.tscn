@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://difu7073qhw6m"]
 
 [ext_resource type="Script" uid="uid://cf0vakdyv0gf3" path="res://addons/simple_inventory/ui/widgets/equipment_widget.gd" id="1_bctgr"]
-[ext_resource type="Texture2D" uid="uid://b4mnhn6ma74vi" path="res://addons/simple_inventory/assets/textures/GUI.png" id="1_fcjjf"]
+[ext_resource type="Texture2D" uid="uid://bodenibynr88e" path="res://addons/simple_inventory/assets/textures/GUI_4x.png" id="1_fcjjf"]
 [ext_resource type="PackedScene" uid="uid://dqf8rbssc0uqm" path="res://addons/simple_inventory/ui/slots/equip_slot.tscn" id="2_otemo"]
 [ext_resource type="Resource" uid="uid://bhy8aihj00hux" path="res://addons/simple_inventory/assets/data/equip_slots/necklace_equip_slot.tres" id="4_2whui"]
 [ext_resource type="Resource" uid="uid://jxcvuo4srmrj" path="res://addons/simple_inventory/assets/data/equip_slots/weapon_equip_slot.tres" id="5_6ht52"]
@@ -29,7 +29,7 @@ script = ExtResource("1_bctgr")
 [node name="TextureRect" type="NinePatchRect" parent="."]
 layout_mode = 2
 texture = ExtResource("1_fcjjf")
-region_rect = Rect2(48, 96, 32, 32)
+region_rect = Rect2(448, 128, 64, 64)
 patch_margin_left = 6
 patch_margin_top = 5
 patch_margin_right = 5
