@@ -7,7 +7,7 @@ Code is MIT, except where separately noted. Asset licenses are independent of th
 - Source: https://paperhatlizard.itch.io/cryos-mini-gui
 - License: Creative Commons Attribution 4.0 International, https://creativecommons.org/licenses/by/4.0/
 - Files: assets/textures/GUI_4x.png and assets/textures/buttons_4x.png.
-- Verified against the author's free Cryo's Mini GUI.zip (upload 5108183) on 2026-11-03: decoded RGBA pixels match Buttons/buttons_4x.png and GUI/GUI_4x.png respectively. The plugin uses atlas regions/nine-patch slicing; the image content has not been redrawn.
+- Verified against the author's free Cryo's Mini GUI.zip (upload 5108183) on 2026-11-03: decoded RGBA pixels match GUI/GUI_4x.png and Buttons/buttons_4x.png respectively. The plugin uses atlas regions/nine-patch slicing; the image content has not been redrawn.
 
 ## Shikashi's Fantasy Icons Pack — Matt Firth (shikashipx) and game-icons.net
 
