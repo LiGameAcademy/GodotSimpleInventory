@@ -1,102 +1,62 @@
 extends Control
 class_name EquipmentWidgetNew
 
-## 装备栏面板 Widget（对应 EquipmentComponent）
+## 只发现自身子树的槽位；向宿主发出卸装意图。
+signal unequip_requested(slot_id: StringName)
 
-## 装备槽位字典（slot_id -> EquipSlot）
 var equip_slots: Dictionary[StringName, EquipSlot] = {}
-## 装备组件引用
-var equipment_component: EquipmentComponent = null
+var equipment_component: EquipmentComponent
 
-## 初始化（通过 EquipmentComponent）
+
 func initialize(component: EquipmentComponent) -> void:
+	if is_instance_valid(equipment_component) and equipment_component.equip_changed.is_connected(_on_equip_changed):
+		equipment_component.equip_changed.disconnect(_on_equip_changed)
+	for old_id: StringName in equip_slots:
+		var old_slot: EquipSlot = equip_slots[old_id]
+		var handler: Callable = _on_mouse_button_right_pressed.bind(old_id)
+		if old_slot.mouse_button_right_pressed.is_connected(handler):
+			old_slot.mouse_button_right_pressed.disconnect(handler)
+	equip_slots.clear()
 	equipment_component = component
-	if not is_instance_valid(equipment_component):
-		push_error("EquipmentWidget: equipment_component is not valid")
+	if not is_instance_valid(component):
 		return
-	
-	# 连接信号
-	equipment_component.equip_changed.connect(_on_equip_changed)
-	
-	# 初始化槽位
-	_initialize_slots()
-	
-	# 更新显示
+	_collect_slots(self)
+	component.equip_changed.connect(_on_equip_changed)
 	update_display()
 
-## 更新显示
+
 func update_display() -> void:
 	if not is_instance_valid(equipment_component):
 		return
-	
-	for slot_id in equip_slots.keys():
-		var equip: GameplayEquipInstance = equipment_component.get_equip(slot_id)
-		var slot: EquipSlot = equip_slots.get(slot_id)
-		if is_instance_valid(slot):
-			slot.set_item(equip)
+	for slot_id: StringName in equip_slots:
+		equip_slots[slot_id].set_item(equipment_component.get_equip(slot_id))
 
-## 显示装备栏
+
 func show_equipment() -> void:
-	self.show()
+	show()
 
-## 隐藏装备栏
+
 func hide_equipment() -> void:
-	self.hide()
+	hide()
 
-## 初始化槽位
-func _initialize_slots() -> void:
-	equip_slots.clear()
-	
-	# 从场景中查找所有装备槽位
-	var slots: Array = get_tree().get_nodes_in_group("equip_slot")
-	
-	for slot in slots:
-		if not slot is EquipSlot:
-			push_warning("EquipmentWidget: 槽位不是 EquipSlot，将跳过")
-			continue
-		if not slot.visible:
-			continue
-		
-		var equip_slot: EquipSlot = slot as EquipSlot
-		var slot_id: StringName = equip_slot.get_slot_id()
-		if slot_id.is_empty():
-			push_warning("EquipmentWidget: 槽位缺少 slot_id，将跳过")
-			continue
-		if equip_slots.has(slot_id):
-			push_warning("EquipmentWidget: 槽位重复，将覆盖!")
 
-		equip_slots[slot_id] = equip_slot
-		
-		# 连接信号
-		equip_slot.mouse_button_left_pressed.connect(_on_mouse_button_left_pressed.bind(slot_id))
-		equip_slot.mouse_button_right_pressed.connect(_on_mouse_button_right_pressed.bind(slot_id))
-	
-## 鼠标左键点击
-func _on_mouse_button_left_pressed(_item_res: GameplayItemInstance, _slot_id: StringName) -> void:
-	# 可以在这里实现选中逻辑
-	pass
+func _collect_slots(node: Node) -> void:
+	for child: Node in node.get_children():
+		if child is EquipSlot:
+			var slot: EquipSlot = child as EquipSlot
+			var slot_id: StringName = slot.get_slot_id()
+			if not slot_id.is_empty() and not equip_slots.has(slot_id):
+				equip_slots[slot_id] = slot
+				slot.mouse_button_right_pressed.connect(_on_mouse_button_right_pressed.bind(slot_id))
+		_collect_slots(child)
 
-## 鼠标右键点击
-func _on_mouse_button_right_pressed(item_res: GameplayItemInstance, slot_id: StringName) -> void:
-	# 卸载装备
-	if not is_instance_valid(equipment_component):
-		push_error("EquipmentWidget: equipment_component is not valid")
-		return
-	if not is_instance_valid(item_res):
-		push_error("EquipmentWidget: item_res is not valid")
-		return
-	
-	# 获取背包组件（从装备组件的父节点获取）
-	var user: Node = equipment_component.get_parent()
-	var inventory_component: InventoryComponent = InventoryComponent.get_inventory_component(user) if is_instance_valid(user) else null
-	
-	var success: bool = equipment_component.unequip_item(slot_id, inventory_component)
-	if not success:
-		push_error("EquipmentWidget: unequip_item failed (背包可能已满)")
-		return
 
-## 装备变化信号处理
+func _on_mouse_button_right_pressed(item: GameplayItemInstance, slot_id: StringName) -> void:
+	if is_instance_valid(item):
+		unequip_requested.emit(slot_id)
+
+
 func _on_equip_changed(slot_id: StringName, equip: GameplayEquipInstance) -> void:
-	var slot: EquipSlot = equip_slots.get(slot_id)
+	var slot: EquipSlot = equip_slots.get(slot_id, null)
 	if is_instance_valid(slot):
 		slot.set_item(equip)

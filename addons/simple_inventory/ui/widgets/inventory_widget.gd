@@ -1,6 +1,8 @@
 extends Control
 class_name InventoryWidgetNew
 
+signal item_use_requested(slot_index: int)
+
 ## 背包面板 Widget（对应 InventoryComponent）
 ## 实现逻辑表现分离：逻辑层负责数据计算，表现层负责渲染显示
 
@@ -61,9 +63,11 @@ var selected_index: int = 0:
 
 ## 初始化（通过 InventoryComponent）
 func initialize(component: InventoryComponent) -> void:
-	if _is_initialized:
-		push_warning("InventoryWidget: already initialized")
-		return
+	if is_instance_valid(_inventory_component):
+		if _inventory_component.item_changed.is_connected(_on_item_changed):
+			_inventory_component.item_changed.disconnect(_on_item_changed)
+		if _inventory_component.max_slot_count_changed.is_connected(_on_max_slot_count_changed):
+			_inventory_component.max_slot_count_changed.disconnect(_on_max_slot_count_changed)
 	
 	_inventory_component = component
 	if not is_instance_valid(_inventory_component):
@@ -109,7 +113,7 @@ func _calculate_display_data() -> Array[GameplayItemInstance]:
 	
 	# 筛选物品
 	var filtered_items: Array[GameplayItemInstance] = []
-	for item in all_items:
+	for item: GameplayItemInstance in all_items:
 		if not is_instance_valid(item) or not is_instance_valid(item.item_config):
 			continue
 		
@@ -142,7 +146,7 @@ func _render_display() -> void:
 	var slot_count: int = grid_container.get_child_count()
 	
 	# 渲染每个槽位
-	for index in range(slot_count):
+	for index: int in range(slot_count):
 		var slot: Control = grid_container.get_child(index)
 		var item: GameplayItemInstance = null
 		
@@ -243,7 +247,7 @@ func _initialize_slots() -> void:
 	
 	# 获取当前槽位数量（只计算 ItemSlot 类型的节点，与 _connect_slot_signals 保持一致）
 	var current_slots: Array[ItemSlot] = []
-	for child in grid_container.get_children():
+	for child: Node in grid_container.get_children():
 		if child is ItemSlot:
 			var slot: ItemSlot = child as ItemSlot
 			if is_instance_valid(slot):
@@ -254,7 +258,7 @@ func _initialize_slots() -> void:
 	# 如果槽位不够，添加新的槽位
 	if current_slot_count < target_slot_count:
 		var slots_to_add: int = target_slot_count - current_slot_count
-		for i in range(slots_to_add):
+		for i: int in range(slots_to_add):
 			var new_slot: Node = ITEM_SLOT_SCENE.instantiate()
 			if is_instance_valid(new_slot) and new_slot is ItemSlot:
 				grid_container.add_child(new_slot)
@@ -266,7 +270,7 @@ func _initialize_slots() -> void:
 	elif current_slot_count > target_slot_count:
 		var slots_to_remove: int = current_slot_count - target_slot_count
 		# 直接获取最后 N 个槽位进行删除，避免遍历时修改数组的问题
-		for i in range(slots_to_remove):
+		for i: int in range(slots_to_remove):
 			var index_to_remove: int = current_slots.size() - 1 - i
 			if index_to_remove >= 0 and index_to_remove < current_slots.size():
 				var slot_to_remove: ItemSlot = current_slots[index_to_remove]
@@ -283,7 +287,7 @@ func _connect_slot_signals() -> void:
 	
 	# 只遍历 ItemSlot 类型的节点，使用它们在组中的实际索引
 	var slot_index: int = 0
-	for child in grid_container.get_children():
+	for child: Node in grid_container.get_children():
 		# 只处理 ItemSlot 类型的节点
 		if not child is ItemSlot:
 			continue
@@ -332,7 +336,7 @@ func _initialize_category_map() -> void:
 	
 	# 将物品类型转换为数组并按 sort_order 排序
 	var type_list: Array[Dictionary] = []
-	for type_id in item_categories:
+	for type_id: String in item_categories:
 		var item_type: GameplayItemType = ItemManager.get_item_type(type_id)
 		if not is_instance_valid(item_type):
 			push_warning("InventoryWidget: item type %s not found in ItemManager" % type_id)
@@ -352,7 +356,7 @@ func _initialize_category_map() -> void:
 	tab_bar.tab_count = tab_count
 
 	# 设置其他标签（从索引1开始）
-	for i in range(type_list.size()):
+	for i: int in range(type_list.size()):
 		var type_info: Dictionary = type_list[i]
 		var tab_index: int = i + 1
 		var type_id: StringName = type_info.type_id
@@ -377,7 +381,7 @@ func _find_item_index_in_display(item: GameplayItemInstance) -> int:
 	if not is_instance_valid(item):
 		return -1
 	
-	for index in range(_display_data.size()):
+	for index: int in range(_display_data.size()):
 		if _display_data[index] == item:
 			return index
 	
@@ -404,7 +408,7 @@ func _use_item(display_index: int) -> void:
 		return
 	
 	# 使用物品（user 参数可选，如果不提供则使用组件的所有者）
-	_inventory_component.use_item(actual_index)
+	item_use_requested.emit(actual_index)
 
 #endregion
 

@@ -65,4 +65,5 @@ func test_item_manager() -> void:
 	var invalid_config: GameplayItem = ItemManager.get_item_config("invalid_id")
 	assert_null(invalid_config, "无效ID应该返回null")
 	
+	suite_completed = true
 	print("  ✓ ItemManager 测试完成")

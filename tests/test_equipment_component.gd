@@ -143,4 +143,5 @@ func test_equipment_component() -> void:
 	# 清理
 	scene.queue_free()
 	
+	suite_completed = true
 	print("  ✓ EquipmentComponent 测试完成")

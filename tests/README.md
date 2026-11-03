@@ -22,16 +22,32 @@ tests/
 ### 方法1：在Godot编辑器中运行
 
 1. 打开 `tests/test_main.tscn` 场景
-2. 点击运行按钮（F5）
+2. 运行当前场景（F6）
 3. 查看输出面板中的测试结果
 
 ### 方法2：通过命令行运行
 
 ```bash
-godot --path . --script tests/test_main.gd
+godot --headless --editor --path . --import
+godot --headless --path . res://tests/test_main.tscn
+godot --headless --path . res://tests/test_ui_isolation.tscn
 ```
 
 ## 测试覆盖
+
+当前核心入口包含8个套件、155项断言；双UI场景另含10项断言。
+核心测试覆盖部分堆叠数量守恒、尾槽缩容、原子添加及通知、满背包换装、独占实例和JSON快照恢复。UI场景覆盖隐藏面板、A/B隔离和重绑。
+
+命令行成功退出码为0，断言失败为1。使用 `res://tests/test_main.tscn -- --verify-failure` 可验证失败退出码；该参数刻意产生一项失败，不用于正常验收。
+运行检查还必须查看脚本解析错误及测试完成标记，不能只看进程退出码。
+
+Windows编辑器生命周期验证（会在系统临时目录创建独立工程并保留日志）：
+
+```powershell
+./tools/verify_editor_lifecycle.ps1 -Godot '绝对路径/Godot_console.exe'
+```
+
+包含首次安装、重启、禁用与宿主同名单例保护，共8项检查；不在当前编辑器工程中切换插件。
 
 ### GameplayItemInstance
 - ✅ 实例创建

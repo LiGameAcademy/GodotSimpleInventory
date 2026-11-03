@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dva8745lj7y6t"]
 
 [ext_resource type="Script" uid="uid://bl6jtcudh62e" path="res://addons/simple_inventory/ui/widgets/inventory_widget.gd" id="1_kg5ao"]
-[ext_resource type="Texture2D" uid="uid://b4mnhn6ma74vi" path="res://addons/simple_inventory/assets/textures/GUI.png" id="1_ncrer"]
+[ext_resource type="Texture2D" uid="uid://bodenibynr88e" path="res://addons/simple_inventory/assets/textures/GUI_4x.png" id="1_ncrer"]
 [ext_resource type="FontFile" uid="uid://bj4wlflwm0lq7" path="res://addons/simple_inventory/assets/fonts/SourceHanSansSC-Regular-2.otf" id="2_kg5ao"]
 [ext_resource type="PackedScene" uid="uid://bpmild4bh2ry1" path="res://addons/simple_inventory/ui/slots/item_slot.tscn" id="3_sadpk"]
 [ext_resource type="Texture2D" uid="uid://dfa2cht5nd7ep" path="res://addons/simple_inventory/assets/textures/buttons_4x.png" id="4_o7gdw"]
@@ -31,7 +31,7 @@ script = ExtResource("1_kg5ao")
 [node name="TextureRect" type="NinePatchRect" parent="."]
 layout_mode = 2
 texture = ExtResource("1_ncrer")
-region_rect = Rect2(48, 96, 32, 32)
+region_rect = Rect2(448, 128, 64, 64)
 patch_margin_left = 6
 patch_margin_top = 5
 patch_margin_right = 5

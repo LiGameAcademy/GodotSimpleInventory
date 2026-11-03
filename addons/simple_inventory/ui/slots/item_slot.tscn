@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpmild4bh2ry1"]
 
 [ext_resource type="Script" uid="uid://c4ty6sqnqpg6f" path="res://addons/simple_inventory/ui/slots/item_slot.gd" id="1_iibhv"]
-[ext_resource type="Texture2D" uid="uid://b4mnhn6ma74vi" path="res://addons/simple_inventory/assets/textures/GUI.png" id="2_2f0i1"]
+[ext_resource type="Texture2D" uid="uid://bodenibynr88e" path="res://addons/simple_inventory/assets/textures/GUI_4x.png" id="2_2f0i1"]
 [ext_resource type="PackedScene" uid="uid://cfb2bsiwl44wm" path="res://addons/simple_inventory/ui/tiles/item_tile.tscn" id="2_gijiy"]
 
 [node name="ItemSlot" type="MarginContainer" groups=["item_slot"]]
@@ -14,7 +14,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 mouse_filter = 1
 texture = ExtResource("2_2f0i1")
-region_rect = Rect2(81, 97, 30, 30)
+region_rect = Rect2(516, 196, 56, 56)
 patch_margin_left = 6
 patch_margin_top = 7
 patch_margin_right = 6

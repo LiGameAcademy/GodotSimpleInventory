@@ -5,7 +5,7 @@ class_name GameplayEquipInstance
 var enhancement_level: int = 0
 
 ## 附魔列表（可选，后续扩展）
-var enchantments: Array = []
+var enchantments: Array[StringName] = []
 
 func _init(config: GameplayEquip, qty: int = 1) -> void:
 	if not is_instance_valid(config) or not config is GameplayEquip:
