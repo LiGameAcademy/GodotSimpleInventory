@@ -35,7 +35,7 @@ godot --headless --path . res://tests/test_ui_isolation.tscn
 
 ## 测试覆盖
 
-当前核心入口包含8个套件、155项断言；双UI场景另含10项断言。
+当前核心入口包含9个套件、169项断言；双UI场景另含10项断言。新增InventoryReceipts覆盖完整堆叠入包、原始接收数量、拒绝无通知和恢复不计入；插件目录另含9项空宿主契约。统一命令为python tools/run_checks.py --godot <Godot路径>。
 核心测试覆盖部分堆叠数量守恒、尾槽缩容、原子添加及通知、满背包换装、独占实例和JSON快照恢复。UI场景覆盖隐藏面板、A/B隔离和重绑。
 
 命令行成功退出码为0，断言失败为1。使用 `res://tests/test_main.tscn -- --verify-failure` 可验证失败退出码；该参数刻意产生一项失败，不用于正常验收。

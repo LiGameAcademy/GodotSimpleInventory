@@ -22,6 +22,6 @@ python tools/run_checks.py --godot /absolute/path/to/godot
 
 This runs 169 core assertions, 10 UI isolation assertions and 9 isolated plugin contracts. The invalid-ID negative test deliberately prints one ItemManager diagnostic; all unexpected errors fail. Windows editor lifecycle checks are documented in tests/README.md. Interactive drag, scaling and final visual preferences still require manual acceptance.
 
-The authoritative plugin tree stays here. Generate the distribution using git subtree split --prefix=addons/simple_inventory; publish only a validated split commit. The plugin root includes its own README, notices, contracts and CI. No manual parallel edits to the distribution.
+The authoritative plugin tree stays here. Derive the plugin root using git subtree split --prefix=addons/simple_inventory or git archive HEAD:addons/simple_inventory, then publish a validated snapshot with the identical Git tree. The first distribution commit starts new history so removed unverified assets are not copied into the new repository's history. See [distribution maintenance](docs/plugin_distribution.md). No manual parallel edits to the distribution.
 
 Code is MIT. See [third-party notices](addons/simple_inventory/THIRD_PARTY_NOTICES.md) for asset licenses. Historical lessons need their matching revisions; current APIs are documented in the plugin.
