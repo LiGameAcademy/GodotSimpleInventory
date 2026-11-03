@@ -8,6 +8,12 @@
 
 当前验证Godot 4.7.2，未验证4.5。本仓库根目录即插件目录，不包含独立游戏工程。
 
+## 界面预览
+
+![示例道具、堆叠数量和默认装备槽布局](docs/screenshots/inventory_equipment.png)
+
+真实默认UI，取自配置了示例物品的源工程宿主，展示图标、堆叠数量、分类与装备槽布局。截图不代表人工交互验收已经完成。[截图说明](docs/screenshots/README.md)。
+
 ## 安装与接入
 
 将本仓库作为子模块放到 addons/simple_inventory，固定已验证标签或提交；也可以复制整个插件目录。具体命令见[使用说明](docs/usage_zh-CN.md)。启用 li_simple_inventory 后重启Godot；既有同名单例保留，冲突需先解决。

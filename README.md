@@ -6,6 +6,12 @@ Source, teaching examples and tests for the LaoLi inventory and equipment plugin
 
 > For more Godot learning resources and to support future development, visit [LiGameAcademy on Patreon](https://www.patreon.com/cw/LiGameAcademy).
 
+## Preview
+
+![Inventory and equipment-slot layout in a configured demo host](addons/simple_inventory/docs/screenshots/inventory_equipment.png)
+
+The actual plugin UI with configured demo item stacks; Chinese labels shown. [Capture details](addons/simple_inventory/docs/screenshots/README.md).
+
 ## Use the plugin
 
 Install the [plugin-only repository](https://github.com/LiGameAcademy/laoli_simple_inventory) at addons/simple_inventory, fixed to a validated commit or tag. See the [usage guide](addons/simple_inventory/docs/usage.md). Enable the plugin and restart Godot.

@@ -8,6 +8,12 @@ Reusable inventory and equipment components for Godot: stackable item instances,
 
 Validated with **Godot 4.7.2**. Godot 4.5 has not been tested. This repository root is the plugin directory, not an example game.
 
+## Preview
+
+![Default inventory and equipment-slot layout with configured demo items](docs/screenshots/inventory_equipment.png)
+
+The real default UI in the configured source demo host: item icons, stack counts, category tabs and equipment-slot layout. Chinese labels are shown. This is a presentation screenshot, not a claim of completed manual interaction testing. [Capture details](docs/screenshots/README.md).
+
 ## Install
 
 ```sh
