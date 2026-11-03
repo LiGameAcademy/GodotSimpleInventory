@@ -6,6 +6,10 @@
 
 > 想继续学习 Godot、获取更多项目学习资源并参与交流，欢迎加入[老李游戏学院知识星球](https://wx.zsxq.com/group/28885154818841)。
 
+![默认背包UI中的示例物品与装备槽布局](addons/simple_inventory/docs/screenshots/inventory_equipment.png)
+
+[截图版本与配置说明](addons/simple_inventory/docs/screenshots/README.md)。
+
 插件负责物品容器、堆叠、装备槽、UI绑定与JSON快照。宿主负责治疗、角色属性/技能/模型、收集任务策略及磁盘存档。成功入包发items_received，完整堆叠也会通知；读档不发送入包事件。
 
 接入其他工程使用[插件发行仓库](https://github.com/LiGameAcademy/laoli_simple_inventory)，固定已验证版本。详见[使用说明](addons/simple_inventory/docs/usage_zh-CN.md)，启用后重启Godot。
