@@ -1,10 +1,16 @@
 # GodotSimpleInventory
 
+[![CI](https://github.com/LiGameAcademy/GodotSimpleInventory/actions/workflows/inventory.yml/badge.svg?branch=master)](https://github.com/LiGameAcademy/GodotSimpleInventory/actions/workflows/inventory.yml)
+[![GitHub stars](https://img.shields.io/github/stars/LiGameAcademy/GodotSimpleInventory)](https://github.com/LiGameAcademy/GodotSimpleInventory/stargazers)
+[![MIT code license](https://img.shields.io/badge/code%20license-MIT-blue)](LICENSE)
+
 [简体中文](README_zh-CN.md) · [Plugin-only distribution](https://github.com/LiGameAcademy/laoli_simple_inventory)
 
 Source, teaching examples and tests for the LaoLi inventory and equipment plugin. Reusable plugin source lives in addons/simple_inventory; this complete Godot project is not intended to be mounted directly at an ARPG addon path.
 
 > For more Godot learning resources and to support future development, visit [LiGameAcademy on Patreon](https://www.patreon.com/cw/LiGameAcademy).
+
+[itch.io](https://godot-li.itch.io/)
 
 ## Preview
 

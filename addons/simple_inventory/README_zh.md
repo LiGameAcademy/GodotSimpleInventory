@@ -1,10 +1,17 @@
 # 老李背包插件
 
+[![CI](https://github.com/LiGameAcademy/laoli_simple_inventory/actions/workflows/inventory.yml/badge.svg?branch=master)](https://github.com/LiGameAcademy/laoli_simple_inventory/actions/workflows/inventory.yml)
+[![GitHub stars](https://img.shields.io/github/stars/LiGameAcademy/laoli_simple_inventory)](https://github.com/LiGameAcademy/laoli_simple_inventory/stargazers)
+[![Release](https://img.shields.io/github/v/release/LiGameAcademy/laoli_simple_inventory)](https://github.com/LiGameAcademy/laoli_simple_inventory/releases/latest)
+[![MIT code license](https://img.shields.io/badge/code%20license-MIT-blue)](LICENSE)
+
 [English](README.md) · [使用说明](docs/usage_zh-CN.md) · [代码许可](LICENSE) · [素材署名](THIRD_PARTY_NOTICES.md)
 
 面向Godot的背包与装备组件：物品实例、堆叠、独占容器、装备槽、安全换装、独立UI与版本1 JSON快照。
 
 > 想继续学习 Godot、获取更多项目学习资源并参与交流，欢迎加入[老李游戏学院知识星球](https://wx.zsxq.com/group/28885154818841)。
+
+[中文 Discord](https://discord.gg/V5nuzC2BcJ) · [itch.io 主页](https://godot-li.itch.io/) · [B 站主页](https://space.bilibili.com/8618918)
 
 当前验证Godot 4.7.2，未验证4.5。本仓库根目录即插件目录，不包含独立游戏工程。
 

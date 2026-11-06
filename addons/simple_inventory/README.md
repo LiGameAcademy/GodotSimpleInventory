@@ -1,10 +1,17 @@
 # LaoLi Simple Inventory
 
+[![CI](https://github.com/LiGameAcademy/laoli_simple_inventory/actions/workflows/inventory.yml/badge.svg?branch=master)](https://github.com/LiGameAcademy/laoli_simple_inventory/actions/workflows/inventory.yml)
+[![GitHub stars](https://img.shields.io/github/stars/LiGameAcademy/laoli_simple_inventory)](https://github.com/LiGameAcademy/laoli_simple_inventory/stargazers)
+[![Release](https://img.shields.io/github/v/release/LiGameAcademy/laoli_simple_inventory)](https://github.com/LiGameAcademy/laoli_simple_inventory/releases/latest)
+[![MIT code license](https://img.shields.io/badge/code%20license-MIT-blue)](LICENSE)
+
 [简体中文](README_zh.md) · [Usage](docs/usage.md) · [MIT code license](LICENSE) · [Asset credits](THIRD_PARTY_NOTICES.md)
 
 Reusable inventory and equipment components for Godot: stackable item instances, container ownership, equipment slots, safe replacement, independent UI panels and version-1 JSON snapshots.
 
 > For more Godot learning resources and to support future development, visit [LiGameAcademy on Patreon](https://www.patreon.com/cw/LiGameAcademy).
+
+[itch.io](https://godot-li.itch.io/)
 
 Validated with **Godot 4.7.2**. Godot 4.5 has not been tested. This repository root is the plugin directory, not an example game.
 

@@ -1,10 +1,16 @@
 # GodotSimpleInventory
 
+[![CI](https://github.com/LiGameAcademy/GodotSimpleInventory/actions/workflows/inventory.yml/badge.svg?branch=master)](https://github.com/LiGameAcademy/GodotSimpleInventory/actions/workflows/inventory.yml)
+[![GitHub stars](https://img.shields.io/github/stars/LiGameAcademy/GodotSimpleInventory)](https://github.com/LiGameAcademy/GodotSimpleInventory/stargazers)
+[![MIT code license](https://img.shields.io/badge/code%20license-MIT-blue)](LICENSE)
+
 [English](README.md) · [插件发行仓库](https://github.com/LiGameAcademy/laoli_simple_inventory)
 
 老李背包系统的源码、教学示例与测试工程。可复用插件位于addons/simple_inventory；不要把整个示例仓库直接放进ARPG的插件目录。
 
 > 想继续学习 Godot、获取更多项目学习资源并参与交流，欢迎加入[老李游戏学院知识星球](https://wx.zsxq.com/group/28885154818841)。
+
+[中文 Discord](https://discord.gg/V5nuzC2BcJ) · [itch.io 主页](https://godot-li.itch.io/) · [B 站主页](https://space.bilibili.com/8618918)
 
 ![默认背包UI中的示例物品与装备槽布局](addons/simple_inventory/docs/screenshots/inventory_equipment.png)
 
