@@ -85,7 +85,7 @@ func initialize(component: InventoryComponent) -> void:
 	_initialize_category_map()
 	
 	# 计算并更新显示
-	_refresh_display()
+	update_display()
 	
 	_is_initialized = true
 
