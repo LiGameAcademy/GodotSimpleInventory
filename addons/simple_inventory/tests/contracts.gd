@@ -34,12 +34,18 @@ func _ready() -> void:
 	add_child(other)
 	var other_equipment: EquipmentComponent = EquipmentComponent.new()
 	add_child(other_equipment)
+	first.hide()
 	first.initialize_components(inventory, equipment, self)
 	second.initialize_components(other, other_equipment, self)
+	first.open()
+	var first_slot: ItemSlot = first.inventory_widget.get_slot(0) as ItemSlot
+	var first_open_populated: bool = first.visible and first.inventory_widget.tab_bar.current_tab == 0 \
+			and first_slot.get_item() == inventory.get_item(0) and first_slot.item_tile.is_visible_in_tree()
 	first.close()
 	second.open()
 	_check(not first.visible and second.visible, "independent panel visibility")
-	_check(inventory.items[0].quantity == 5 and other.items[0] == null, "independent inventory state")
+	_check(first_open_populated and inventory.items[0].quantity == 5 and other.items[0] == null,
+			"first open renders seeded items on All and preserves independent inventory state")
 	first.queue_free()
 	second.queue_free()
 	inventory.queue_free()
