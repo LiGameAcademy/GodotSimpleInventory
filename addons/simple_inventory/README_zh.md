@@ -11,7 +11,7 @@
 
 > 想继续学习 Godot、获取更多项目学习资源并参与交流，欢迎加入[老李游戏学院知识星球](https://wx.zsxq.com/group/28885154818841)。
 
-[中文 Discord](https://discord.gg/V5nuzC2BcJ) · [itch.io 主页](https://godot-li.itch.io/) · [B 站主页](https://space.bilibili.com/8618918)
+[中文 Discord](https://discord.gg/94RZFTRKDP) · [itch.io 主页](https://godot-li.itch.io/) · [B 站主页](https://space.bilibili.com/8618918)
 
 当前验证Godot 4.7.2，未验证4.5。本仓库根目录即插件目录，不包含独立游戏工程。
 
