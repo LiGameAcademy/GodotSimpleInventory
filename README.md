@@ -10,7 +10,7 @@ Source, teaching examples and tests for the LaoLi inventory and equipment plugin
 
 > For more Godot learning resources and to support future development, visit [LiGameAcademy on Patreon](https://www.patreon.com/cw/LiGameAcademy).
 
-[itch.io](https://godot-li.itch.io/)
+[English Discord](https://discord.gg/5KAqAMU8x5) · [itch.io](https://godot-li.itch.io/)
 
 ## Preview
 
